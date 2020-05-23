@@ -66,7 +66,7 @@
         <h2 class="mt-4" style="margin-bottom: 30px">
           <center>Input Barang Masuk</center>
         </h2>
-        <form action="update_masuk.php" method="post">
+        <form action="up_masuk.php" method="post">
           <a href="barang_tambah.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-primary" name="button">Input Barang Baru</a>
           <table class="table table-bordered table-hover">
             <tr>
@@ -94,23 +94,21 @@
           $data = mysqli_query($koneksi, "SELECT * from barang_pusat");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
-              $id_barang = (int) $d['id_barang'];
-              $nama_barang = $d['nama_barang'];
-              $jenis_barang = $d['jenis_barang'];
-              $model_barang = $d['model_barang'];
-              $jumlah_stok = $d['jumlah_stok']; ?>
+              ?>
             <tr>
               <td><?php echo $no++; ?></td>
               <td><?php echo $d['kode_barang']; ?></td>
               <td><?php echo $d['nama_barang']; ?></td>
               <td><?php echo $d['jenis_barang']; ?></td>
               <td><?php echo $d['model_barang']; ?></td>
-              <td><center><?php echo $d['jumlah_stok']; ?></td>
+              <td>
+                <center><?php echo $d['jumlah_stok']; ?>
+              </td>
               <td>
                 <center><a type="bottom" class="btn btn-warning btn-sm" href="barang_masuk_input.php?id_barang=<?php echo $d['id_barang']; ?>">Barang Masuk</a>
               </td>
               <td>
-                <center><input class="form-check-input" type="checkbox" name="id_barang[]" value="<?php echo $id; ?>">
+                <center><input class="form-check-input" type="checkbox" name="id[]" value="<?php echo $id; ?>">
               </td>
             </tr>
             <?php

@@ -9,7 +9,7 @@ include '../koneksi.php';
 
 // $peminum = $_POST['peminum'];
 $id_barang = $_POST['id_barang'];
-$barang_masuk = $_POST['barang_masuk'];
+$barang_keluar = $_POST['barang_keluar'];
 
 $data = mysqli_query($koneksi, "SELECT * from barang_pusat");
 $no =1;
@@ -19,7 +19,7 @@ while ($d = mysqli_fetch_array($data)) {
 
 // echo $jml_awal;
 // echo $barang_masuk;
-$total_akhir = $jml_awal+$barang_masuk;
+$total_akhir = $jml_awal-$barang_keluar;
 // echo $total_akhir;
 
 mysqli_query($koneksi, "UPDATE barang_pusat SET

@@ -66,7 +66,32 @@
         <h2 class="mt-4" style="margin-bottom: 30px">
           <center>Input Barang Masuk</center>
         </h2>
-        <form action="update_masuk.php" method="post">
+        <form action="aksi_tambah.php" method="post">
+          <?php
+           // memanggil koneksi
+           include('../koneksi.php');
+
+           // jika checkbox yang di pilih lebih 0
+           if (count($_POST['id_barang']) == 0) {
+               header('Location: index.php');
+           }
+
+           foreach ($_POST['id_barang'] as $key=>$val) {
+               $no=1;
+               $id_barang = (int) $_POST['id_barang'][$key];
+               $sql =  'SELECT * FROM barang_pusat';
+               $sql .= ' WHERE id_barang='.$id_barang;
+
+               // execute query
+               // $data = mysqli_query($koneksi, "SELECT * from barang_pusat");
+               $data = mysqli_query($koneksi, $sql);
+               $d = mysqli_fetch_array($data);
+
+               // fetch data
+               $nama_barang = $d['nama_barang'];
+               $jenis_barang = $d['jenis_barang'];
+               $model_barang = $d['model_barang'];
+               $jumlah_stok = $d['jumlah_stok']; ?>
           <a href="barang_tambah.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-primary" name="button">Input Barang Baru</a>
           <table class="table table-bordered table-hover">
             <tr>
@@ -84,37 +109,24 @@
               <th>
                 <center>Jumlah Barang Stok</td>
               <th>
-                <center>Barang Masuk</td>
-              <th>
-                <center>Pilih</center>
-              </th>
+                <center>Jumlah Barang Masuk</td>
             </tr>
-            <?php
-          include('../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from barang_pusat");
-          $no =1;
-          while ($d = mysqli_fetch_array($data)) {
-              $id_barang = (int) $d['id_barang'];
-              $nama_barang = $d['nama_barang'];
-              $jenis_barang = $d['jenis_barang'];
-              $model_barang = $d['model_barang'];
-              $jumlah_stok = $d['jumlah_stok']; ?>
+
             <tr>
               <td><?php echo $no++; ?></td>
               <td><?php echo $d['kode_barang']; ?></td>
-              <td><?php echo $d['nama_barang']; ?></td>
+              <td><?php echo $nama_barang; ?></td>
               <td><?php echo $d['jenis_barang']; ?></td>
               <td><?php echo $d['model_barang']; ?></td>
               <td><center><?php echo $d['jumlah_stok']; ?></td>
-              <td>
-                <center><a type="bottom" class="btn btn-warning btn-sm" href="barang_masuk_input.php?id_barang=<?php echo $d['id_barang']; ?>">Barang Masuk</a>
-              </td>
-              <td>
-                <center><input class="form-check-input" type="checkbox" name="id_barang[]" value="<?php echo $id; ?>">
+              <td><center>
+                <input type="hidden" name="id_barang[]" value="<?php echo $id_barang; ?>">
+                <input type="number" name="barang_masuk[]" value="<?php echo $barang_masuk; ?>">
+              </center>
               </td>
             </tr>
             <?php
-          } ?>
+           } ?>
           </table>
           <center><input type="submit" name="" class="btn btn-success" value="Update Data Barang"></center>
       </div>

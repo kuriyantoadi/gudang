@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="pusat") {
+  if ($_SESSION['status']!="cabang") {
       header("location:../login.php?pesan=belum_login");
   }
   ?>
@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang Pusat</title>
+  <title>Gudang Cabang</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang Pusat</h5>
+        <h5>Halaman Cabang</h5>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -66,59 +66,59 @@
         <h2 class="mt-4" style="margin-bottom: 30px">
           <center>Input Barang Masuk</center>
         </h2>
-        <form action="update_masuk.php" method="post">
-          <a href="barang_tambah.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-primary" name="button">Input Barang Baru</a>
+        <form action="up_masuk.php" method="post">
+          <?php
+            include '../koneksi.php';
+            $id_barang = $_GET['id_barang'];
+            $data = mysqli_query($koneksi, "select * from barang_cabang where id_barang='$id_barang'");
+            while ($d = mysqli_fetch_array($data)) {
+                ?>
+
           <table class="table table-bordered table-hover">
             <tr>
-              <th>
-                <center>No
-              </th>
-              <th>
-                <center>ID Barang</td>
-              <th>
-                <center>Nama Barang</td>
-              <th>
-                <center>Jenis Barang</td>
-              <th>
-                <center>Model barang</td>
-              <th>
-                <center>Jumlah Barang Stok</td>
-              <th>
-                <center>Barang Masuk</td>
-              <th>
-                <center>Pilih</center>
-              </th>
+              <td>ID Barang</td>
+              <td>
+                <input type="text" name="id_barang" value="<?php echo $d['id_barang']; ?>" hidden>
+                <input type="text" class="form-control" name="kode_barang" value="<?php echo $d['kode_barang'] ?>" disabled>
+              </td>
             </tr>
-            <?php
-          include('../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from barang_pusat");
-          $no =1;
-          while ($d = mysqli_fetch_array($data)) {
-              $id_barang = (int) $d['id_barang'];
-              $nama_barang = $d['nama_barang'];
-              $jenis_barang = $d['jenis_barang'];
-              $model_barang = $d['model_barang'];
-              $jumlah_stok = $d['jumlah_stok']; ?>
             <tr>
-              <td><?php echo $no++; ?></td>
-              <td><?php echo $d['kode_barang']; ?></td>
-              <td><?php echo $d['nama_barang']; ?></td>
-              <td><?php echo $d['jenis_barang']; ?></td>
-              <td><?php echo $d['model_barang']; ?></td>
-              <td><center><?php echo $d['jumlah_stok']; ?></td>
+              <td>Nama Barang</td>
               <td>
-                <center><a type="bottom" class="btn btn-warning btn-sm" href="barang_masuk_input.php?id_barang=<?php echo $d['id_barang']; ?>">Barang Masuk</a>
-              </td>
-              <td>
-                <center><input class="form-check-input" type="checkbox" name="id_barang[]" value="<?php echo $id; ?>">
+                <input type="text" class="form-control" name="nama_barang" value="<?php echo $d['nama_barang'] ?>" disabled>
               </td>
             </tr>
-            <?php
-          } ?>
+            <tr>
+              <td>Jenis Barang</td>
+              <td>
+                <input type="text" class="form-control" name="jenis_barang" value="<?php echo $d['jenis_barang'] ?>" disabled>
+              </td>
+            </tr>
+            <tr>
+              <td>Model Barang</td>
+              <td>
+                <input type="text" class="form-control" name="model_barang" value="<?php echo $d['model_barang'] ?>" disabled>
+              </td>
+            </tr>
+            <tr>
+              <td>Jumlah Stok</td>
+              <td>
+                <input type="text" class="form-control" name="jumlah_satuan" value="<?php echo $d['jumlah_stok'] ?>" disabled>
+              </td>
+            </tr>
+            <tr>
+              <td>Jumlah Barang Masuk</td>
+              <td>
+                <input type="text" class="form-control" name="barang_masuk" required>
+              </td>
+            </tr>
+
           </table>
-          <center><input type="submit" name="" class="btn btn-success" value="Update Data Barang"></center>
+          <center><input type="submit" name="" class="btn btn-primary" value="Update Data Barang"></center>
       </div>
     </div>
+  <?php
+            } ?>
     </form>
 
     <!-- /#page-content-wrapper -->

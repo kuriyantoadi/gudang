@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="pusat") {
+  if ($_SESSION['status']!="cabang") {
       header("location:../login.php?pesan=belum_login");
   }
   ?>
@@ -14,7 +14,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang Pusat</title>
+  <title>Gudang Cabang</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -36,7 +36,7 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang Pusat</h5>
+        <h5>Halaman Cabang</h5>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -74,7 +74,7 @@
           </tr>
           <?php
           include('../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from barang_pusat");
+          $data = mysqli_query($koneksi, "SELECT * from barang_cabang");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
