@@ -46,13 +46,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item ">
-              <a class="nav-link" href="index.php">Tampil Stok Barang </a>
+              <a class="nav-link" href="index.php">Tampil Stok material </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="barang_masuk.php">Input Barang Masuk</a>
+              <a class="nav-link" href="data-material.php">Data Material</a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link" href="barang_keluar.php">Input Barang Keluar</a>
+              <a class="nav-link" href="material_keluar.php">Input material Keluar</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="../logout.php">Logout</a>
@@ -64,59 +64,46 @@
 
       <div class="container">
         <h2 class="mt-4" style="margin-bottom: 30px">
-          <center>Input Barang Masuk</center>
+          <center>Tambah Material Baru</center>
         </h2>
-        <form action="up_masuk.php" method="post">
-          <a href="barang_tambah.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-primary" name="button">Input Barang Baru</a>
+        <form action="up_baru.php" method="post">
+
           <table class="table table-bordered table-hover">
             <tr>
-              <th>
-                <center>No
-              </th>
-              <th>
-                <center>ID Barang</td>
-              <th>
-                <center>Nama Barang</td>
-              <th>
-                <center>Jenis Barang</td>
-              <th>
-                <center>Model barang</td>
-              <th>
-                <center>Jumlah Barang Stok</td>
-              <th>
-                <center>Barang Masuk</td>
-              <th>
-                <center>Pilih</center>
-              </th>
+              <td>ID material</td>
+              <td>
+                <input type="text" class="form-control" name="id_material" required >
+              </td>
             </tr>
-            <?php
-          include('../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from barang_pusat");
-          $no =1;
-          while ($d = mysqli_fetch_array($data)) {
-              ?>
             <tr>
-              <td><?php echo $no++; ?></td>
-              <td><?php echo $d['kode_barang']; ?></td>
-              <td><?php echo $d['nama_barang']; ?></td>
-              <td><?php echo $d['jenis_barang']; ?></td>
-              <td><?php echo $d['model_barang']; ?></td>
+              <td>Nama Material</td>
               <td>
-                <center><?php echo $d['jumlah_stok']; ?>
-              </td>
-              <td>
-                <center><a type="bottom" class="btn btn-warning btn-sm" href="barang_masuk_input.php?id_barang=<?php echo $d['id_barang']; ?>">Barang Masuk</a>
-              </td>
-              <td>
-                <center><input class="form-check-input" type="checkbox" name="id[]" value="<?php echo $id; ?>">
+                <input type="text" class="form-control" name="nama_material" required>
               </td>
             </tr>
-            <?php
-          } ?>
-          </table>
-          <center><input type="submit" name="" class="btn btn-success" value="Update Data Barang"></center>
+            <tr>
+              <td>Jumlah Material</td>
+              <td>
+                <input type="text" class="form-control" name="jumlah_material" required>
+              </td>
+            </tr>
+            <tr>
+              <td>Jenis Satuan Material</td>
+              <td>
+                <select class="form-control" name="jenis_satuan_material">
+                  <option value="Meter">Meter</option>
+                  <option value="Batang">Batang</option>
+                  <option value="Pcs">Pcs</option>
+                </select>
+              </td>
+            </tr>
+
+          </table><center>
+            <button type="submit" name="upload" value="upload" class="btn btn-success" >Submit</button>
+          </center>
       </div>
     </div>
+
     </form>
 
     <!-- /#page-content-wrapper -->

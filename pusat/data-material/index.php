@@ -4,7 +4,6 @@
       header("location:../login.php?pesan=belum_login");
   }
   ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +48,7 @@
               <a class="nav-link" href="index.php">Tampil Stok Barang </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="barang_masuk.php">Input Barang Masuk</a>
+              <a class="nav-link" href="data-material.php">Data Material</a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="barang_keluar.php">Input Barang Keluar</a>
@@ -63,64 +62,37 @@
       </nav>
 
       <div class="container">
-        <h2 class="mt-4" style="margin-bottom: 30px">
-          <center>Input Barang Masuk</center>
-        </h2>
-        <form action="update_masuk.php" method="post">
-          <a href="barang_tambah.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-primary" name="button">Input Barang Baru</a>
-          <table class="table table-bordered table-hover">
-            <tr>
-              <th>
-                <center>No
-              </th>
-              <th>
-                <center>ID Barang</td>
-              <th>
-                <center>Nama Barang</td>
-              <th>
-                <center>Jenis Barang</td>
-              <th>
-                <center>Model barang</td>
-              <th>
-                <center>Jumlah Barang Stok</td>
-              <th>
-                <center>Barang Masuk</td>
-              <th>
-                <center>Pilih</center>
-              </th>
-            </tr>
-            <?php
+        <h2 class="mt-4" style="margin-bottom: 30px"><center>Tampil Stok Barang</center></h2>
+        <table class="table table-bordered table-hover">
+          <tr>
+            <th><center>No</th>
+            <th><center>ID Barang</td>
+            <th><center>Nama Barang</td>
+            <th><center>Jenis Barang</td>
+            <th><center>Model barang</td>
+            <th><center>Jumlah Barang Stok</td>
+          </tr>
+          <?php
           include('../koneksi.php');
           $data = mysqli_query($koneksi, "SELECT * from barang_pusat");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
-              $id_barang = (int) $d['id_barang'];
-              $nama_barang = $d['nama_barang'];
-              $jenis_barang = $d['jenis_barang'];
-              $model_barang = $d['model_barang'];
-              $jumlah_stok = $d['jumlah_stok']; ?>
-            <tr>
-              <td><?php echo $no++; ?></td>
-              <td><?php echo $d['kode_barang']; ?></td>
-              <td><?php echo $d['nama_barang']; ?></td>
-              <td><?php echo $d['jenis_barang']; ?></td>
-              <td><?php echo $d['model_barang']; ?></td>
-              <td><center><?php echo $d['jumlah_stok']; ?></td>
-              <td>
-                <center><a type="bottom" class="btn btn-warning btn-sm" href="barang_masuk_input.php?id_barang=<?php echo $d['id_barang']; ?>">Barang Masuk</a>
-              </td>
-              <td>
-                <center><input class="form-check-input" type="checkbox" name="id_barang[]" value="<?php echo $id; ?>">
-              </td>
-            </tr>
-            <?php
+              ?>
+          <tr>
+            <td><?php echo $no++; ?></td>
+            <td><?php echo $d['kode_barang']; ?></td>
+            <td><?php echo $d['nama_barang']; ?></td>
+            <td><?php echo $d['jenis_barang']; ?></td>
+            <td><?php echo $d['model_barang']; ?></td>
+            <td><center><?php echo $d['jumlah_stok']; ?></td>
+
+
+          </tr>
+          <?php
           } ?>
-          </table>
-          <center><input type="submit" name="" class="btn btn-success" value="Update Data Barang"></center>
+        </table>
       </div>
     </div>
-    </form>
-
     <!-- /#page-content-wrapper -->
 
   </div>
