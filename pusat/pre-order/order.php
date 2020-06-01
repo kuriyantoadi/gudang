@@ -64,60 +64,110 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Edit Material</center>
+          <center>Tabel Barang</center>
         </h3>
-        <form action="up_edit.php" method="post">
-          <?php
-            include '../../koneksi.php';
-            $id_material = $_GET['id_material'];
-            $data = mysqli_query($koneksi, "select * from gudang_pusat where id_material='$id_material'");
-            while ($d = mysqli_fetch_array($data)) {
-                ?>
-
+        <form action="update_masuk.php" method="post">
           <table class="table table-bordered table-hover">
             <tr>
-              <td>ID Material</td>
-              <td>
-                <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
-                <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>">
-              </td>
-            </tr>
-            <tr>
-              <td>Nama Material</td>
-              <td>
-                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" required>
-              </td>
-            </tr>
-            <tr>
-              <td>Jumlah Material</td>
-              <td>
-                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" required>
-              </td>
-            </tr>
-            <tr>
-              <td>Jenis Satuan Material</td>
-              <td>
-                <select class="form-control" name="jenis_satuan_material">
-                  <option value="Meter">Meter</option>
-                  <option value="Batang">Batang</option>
-                  <option value="Pcs">Pcs</option>
-                </select>
-              </td>
-            </tr>
+              <th>
+                <center>No
+              </th>
+              <th>
+                <center>ID Material</td>
+              <th>
+                <center>Nama Material</td>
+              <th>
+                <center>Jumlah Material</td>
+              <th>
+                <center>Jenis Satuan Material</td>
+              <th>
+                <center>Tambah Ke Order</td>
 
+            </tr>
+            <?php
+          include('../../koneksi.php');
+          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
+          $no =1;
+          while ($d = mysqli_fetch_array($data)) {
+              ?>
+            <tr>
+              <td><?php echo $no++; ?></td>
+              <td><?php echo $d['id_material']; ?></td>
+              <td><?php echo $d['nama_material']; ?></td>
+              <td>
+                <center><?php echo $d['jumlah_material']; ?>
+              </td>
+              <td>
+                <center><?php echo $d['jenis_satuan_material']; ?>
+              </td>
+              <td>
+                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Tambah Ke Order</a>
+              </td>
 
+            </tr>
+            <?php
+          } ?>
           </table>
-          <center><input type="submit" name="" class="btn btn-primary" value="Update Data Material"></center>
       </div>
     </div>
-  <?php
-            } ?>
     </form>
 
     <!-- /#page-content-wrapper -->
-
   </div>
   <!-- /#wrapper -->
+
+
+  <h3 class="mt-4" style="margin-bottom: 30px">
+    <center>Tabel Pre-Order</center>
+  </h3>
+  <div class="container">
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>
+        <center>No
+      </th>
+      <th>
+        <center>ID Material</td>
+      <th>
+        <center>Nama Material</td>
+      <th>
+        <center>Jumlah Material</td>
+      <th>
+        <center>Jenis Satuan Material</td>
+      <th>
+        <center>Material Masuk</td>
+      <th>
+        <center>Hapus</td>
+    </tr>
+    <?php
+  include('../../koneksi.php');
+  $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
+  $no =1;
+  while ($d = mysqli_fetch_array($data)) {
+      ?>
+    <tr>
+      <td><?php echo $no++; ?></td>
+      <td><?php echo $d['id_material']; ?></td>
+      <td><?php echo $d['nama_material']; ?></td>
+      <td>
+        <center><?php echo $d['jumlah_material']; ?>
+      </td>
+      <td>
+        <center><?php echo $d['jenis_satuan_material']; ?>
+      </td>
+      <td>
+        <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Jumlah Barang</a>
+      </td>
+      <td>
+        <center>
+          <a type="button" class="btn btn-danger btn-sm" href="up_hapus.php?id=<?php echo $d['id']; ?>" onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
+        </center>
+      </td>
+    </tr>
+    <?php
+  } ?>
+  </table>
+</div>
 
   <!-- Bootstrap core JavaScript -->
   <script src="../../vendor/jquery/jquery.min.js"></script>

@@ -5,7 +5,7 @@ if ($_SESSION['status']!="pusat") {
 }
 
 
-include '../koneksi.php';
+include '../../koneksi.php';
 
 $id_material = $_POST['id_material'];
 $nama_material = $_POST['nama_material'];
@@ -21,4 +21,4 @@ mysqli_query($koneksi, "insert into gudang_pusat values(
 
 )");
 
- // header("location:data-material.php");
+ header("location:data-material.php");

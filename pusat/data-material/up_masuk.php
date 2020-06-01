@@ -5,7 +5,7 @@ if ($_SESSION['status']!="pusat") {
 }
 
 
-include '../koneksi.php';
+include '../../koneksi.php';
 
 $id = $_POST['id'];
 $material_masuk = $_POST['material_masuk'];

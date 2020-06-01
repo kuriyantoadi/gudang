@@ -5,7 +5,7 @@ if ($_SESSION['status']!="pusat") {
 }
 
 
-include '../koneksi.php';
+include '../../koneksi.php';
 
 $id = $_POST['id'];
 $id_material = $_POST['id_material'];
@@ -23,4 +23,4 @@ mysqli_query($koneksi, "UPDATE gudang_pusat SET
              where id='$id'
              ");
 
- // header("location:data-material.php");
+ header("location:data-material.php");

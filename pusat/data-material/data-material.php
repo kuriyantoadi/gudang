@@ -18,10 +18,10 @@
   <title>Gudang Pusat</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/simple-sidebar.css" rel="stylesheet">
+  <link href="../../css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 
@@ -67,7 +67,7 @@
           <center>Data Material</center>
         </h3>
         <form action="update_masuk.php" method="post">
-          <a href="material-baru.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-primary" name="button">Input Material Baru</a>
+          <a href="material-baru.php" style="margin-bottom: 30px" type="button" class="btn btn-primary" name="button">Input Material Baru</a>
           <table class="table table-bordered table-hover">
             <tr>
               <th>
@@ -90,7 +90,7 @@
                 <center>Hapus</td>
             </tr>
             <?php
-          include('../koneksi.php');
+          include('../../koneksi.php');
           $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
@@ -129,8 +129,8 @@
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Menu Toggle Script -->
   <script>

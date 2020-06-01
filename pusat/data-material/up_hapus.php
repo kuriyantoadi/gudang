@@ -1,6 +1,6 @@
 <?php
 // koneksi database
-include '../koneksi.php';
+include '../../koneksi.php';
 
 // menangkap data id yang di kirim dari url
 session_start();
