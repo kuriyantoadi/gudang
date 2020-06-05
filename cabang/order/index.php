@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="pusat") {
+  if ($_SESSION['status']!="cabang") {
       header("location:../login.php?pesan=belum_login");
   }
   ?>
@@ -64,44 +64,42 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Tabel Barang</center>
+          <center>Tampil Data Order</center>
         </h3>
         <form action="update_masuk.php" method="post">
+          <a type="bottom" class="btn btn-primary btn-sm" href="kode-order.php">Tambah Order</a>
+          <br><br>
           <table class="table table-bordered table-hover">
             <tr>
               <th>
                 <center>No
               </th>
               <th>
-                <center>ID Material</td>
+                <center>ID Order</td>
               <th>
-                <center>Nama Material</td>
+                <center>Tanggal Order</td>
               <th>
-                <center>Jumlah Material</td>
+                <center>Kondisi</td>
               <th>
-                <center>Jenis Satuan Material</td>
-              <th>
-                <center>Tambah Ke Order</td>
+                <center>Lihat</td>
+
 
             </tr>
             <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
+          $data = mysqli_query($koneksi, "SELECT * from t_order");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
             <tr>
               <td><?php echo $no++; ?></td>
-              <td><?php echo $d['id_material']; ?></td>
-              <td><?php echo $d['nama_material']; ?></td>
+              <td><?php echo $d['kode_order']; ?></td>
+              <td><?php echo $d['tanggal_order']; ?></td>
               <td>
-                <center><?php echo $d['jumlah_material']; ?>
+                <center><?php echo $d['kondisi']; ?>
               </td>
               <td>
-                <center><?php echo $d['jenis_satuan_material']; ?>
-              </td>
-              <td>
-                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Tambah Ke Order</a>
+                <center><a type="bottom" class="btn btn-success btn-sm" href="order.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat</a>
               </td>
 
             </tr>
@@ -110,64 +108,16 @@
           </table>
       </div>
     </div>
-    </form>
-
-    <!-- /#page-content-wrapper -->
   </div>
+
+  </form>
+
+  <!-- /#page-content-wrapper -->
+
+
+
+
   <!-- /#wrapper -->
-
-
-  <h3 class="mt-4" style="margin-bottom: 30px">
-    <center>Tabel Pre-Order</center>
-  </h3>
-  <div class="container">
-  <table class="table table-bordered table-hover">
-    <tr>
-      <th>
-        <center>No
-      </th>
-      <th>
-        <center>ID Material</td>
-      <th>
-        <center>Nama Material</td>
-      <th>
-        <center>Jumlah Material</td>
-      <th>
-        <center>Jenis Satuan Material</td>
-      <th>
-        <center>Material Masuk</td>
-      <th>
-        <center>Hapus</td>
-    </tr>
-    <?php
-  include('../../koneksi.php');
-  $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
-  $no =1;
-  while ($d = mysqli_fetch_array($data)) {
-      ?>
-    <tr>
-      <td><?php echo $no++; ?></td>
-      <td><?php echo $d['id_material']; ?></td>
-      <td><?php echo $d['nama_material']; ?></td>
-      <td>
-        <center><?php echo $d['jumlah_material']; ?>
-      </td>
-      <td>
-        <center><?php echo $d['jenis_satuan_material']; ?>
-      </td>
-      <td>
-        <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Jumlah Barang</a>
-      </td>
-      <td>
-        <center>
-          <a type="button" class="btn btn-danger btn-sm" href="up_hapus.php?id=<?php echo $d['id']; ?>" onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
-        </center>
-      </td>
-    </tr>
-    <?php
-  } ?>
-  </table>
-</div>
 
   <!-- Bootstrap core JavaScript -->
   <script src="../../vendor/jquery/jquery.min.js"></script>

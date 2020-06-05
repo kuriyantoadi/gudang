@@ -62,66 +62,56 @@
         </div>
       </nav>
 
-      <div class="container-fluid">
-        <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Data Pre-Order</center>
-        </h3>
-        <form action="update_masuk.php" method="post">
-          <a href="material-baru.php" style="margin-bottom: 30px" type="button" class="btn btn-primary" name="button">Input Material Baru</a>
+      <div class="container">
+        <h2 class="mt-4" style="margin-bottom: 30px">
+          <center>Input Barang Masuk</center>
+        </h2>
+          <?php
+            include '../../koneksi.php';
+            $id_material = $_GET['id_material'];
+            $data = mysqli_query($koneksi, "select * from gudang_pusat where id_material='$id_material'");
+            while ($d = mysqli_fetch_array($data)) {
+                ?>
+
           <table class="table table-bordered table-hover">
             <tr>
-              <th>
-                <center>No </th>
-              <th>
-                <center>ID Material</td>
-              <th>
-                <center>Nama Material</td>
-              <th>
-                <center>Jumlah Material</td>
-              <th>
-                <center>Jenis Satuan Material</td>
-              <th>
-                <center>Material Masuk</td>
-              <th>
-                <center>Material Keluar</td>
-              <th>
-                <center>Edit</td>
-              <th>
-                <center>Hapus</td>
+              <td>ID Material</td>
+              <td>
+                <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
+                <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>" disabled>
+              </td>
             </tr>
-            <?php
-          include('../../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
-          $no =1;
-          while ($d = mysqli_fetch_array($data)) {
-              ?>
             <tr>
-              <td><?php echo $no++; ?></td>
-              <td><?php echo $d['id_material']; ?></td>
-              <td><?php echo $d['nama_material']; ?></td>
-              <td><center><?php echo $d['jumlah_material']; ?></td>
-              <td><center><?php echo $d['jenis_satuan_material']; ?></td>
+              <td>Nama Material</td>
               <td>
-                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Material Masuk</a>
-              </td>
-              <td>
-                <center><a type="bottom" class="btn btn-primary btn-sm" href="material-keluar.php?id_material=<?php echo $d['id_material']; ?>">Material Keluar</a>
-              </td>
-              <td>
-                <center><a type="bottom" class="btn btn-warning btn-sm" href="material-edit.php?id_material=<?php echo $d['id_material']; ?>">Edit</a>
-              </td>
-              <td>
-                <center>
-                  <a type="button" class="btn btn-danger btn-sm" href="up_hapus.php?id=<?php echo $d['id']; ?>" onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
-                </center>
+                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" disabled>
               </td>
             </tr>
-            <?php
-          } ?>
+            <tr>
+              <td>Jumlah Material</td>
+              <td>
+                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" disabled>
+              </td>
+            </tr>
+            <tr>
+              <td>Jenis Satuan Material</td>
+              <td>
+                <input type="text" class="form-control" name="jenis_satuan_material" value="<?php echo $d['jenis_satuan_material'] ?>" disabled>
+              </td>
+            </tr>
+            <tr>
+              <td>Jumlah Material Masuk</td>
+              <td>
+                <input type="text" class="form-control" name="material_masuk" required>
+              </td>
+            </tr>
+
           </table>
+          <center><input type="submit" name="" class="btn btn-primary" value="Update Data Material"></center>
       </div>
     </div>
-    </form>
+  <?php
+            } ?>
 
     <!-- /#page-content-wrapper -->
 

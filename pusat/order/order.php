@@ -64,10 +64,9 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Data Material</center>
+          <center>Data Tabel Barang</center>
         </h3>
         <form action="update_masuk.php" method="post">
-          <a href="material-baru.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-primary" name="button">Input Material Baru</a>
           <table class="table table-bordered table-hover">
             <tr>
               <th>
@@ -81,13 +80,8 @@
               <th>
                 <center>Jenis Satuan Material</td>
               <th>
-                <center>Material Masuk</td>
-              <th>
-                <center>Material Keluar</td>
-              <th>
-                <center>Edit</td>
-              <th>
-                <center>Hapus</td>
+                <center>Tambah Ke Pre-Order</td>
+
             </tr>
             <?php
           include('../../koneksi.php');
@@ -102,30 +96,69 @@
               <td><center><?php echo $d['jumlah_material']; ?></td>
               <td><center><?php echo $d['jenis_satuan_material']; ?></td>
               <td>
-                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Material Masuk</a>
+                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Tambah Ke Pre-Order</a>
               </td>
-              <td>
-                <center><a type="bottom" class="btn btn-primary btn-sm" href="material-keluar.php?id_material=<?php echo $d['id_material']; ?>">Material Keluar</a>
-              </td>
-              <td>
-                <center><a type="bottom" class="btn btn-warning btn-sm" href="material-edit.php?id_material=<?php echo $d['id_material']; ?>">Edit</a>
-              </td>
-              <td>
-                <center>
-                  <a type="button" class="btn btn-danger btn-sm" href="up_hapus.php?id=<?php echo $d['id']; ?>" onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
-                </center>
-              </td>
+
             </tr>
             <?php
           } ?>
           </table>
       </div>
     </div>
+  </div>
+
     </form>
 
     <!-- /#page-content-wrapper -->
 
-  </div>
+
+
+  <!-- awal preoder -->
+  <div class="container">
+  <h3 class="mt-4" style="margin-bottom: 30px">
+  <center>Tabel Pre-Order</h3>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>
+        <center>No </th>
+      <th>
+        <center>Tanggal Order</th>
+      <th>
+        <center>Nama Material</td>
+      <th>
+        <center>Jumlah Material</td>
+      <th>
+        <center>Input Pre-Order</td>
+      <th>
+        <center>Hapus
+      </th>
+    </tr>
+    <?php
+  include('../../koneksi.php');
+  $data = mysqli_query($koneksi, "SELECT * from t_order");
+  $no =1;
+  while ($d = mysqli_fetch_array($data)) {
+      ?>
+    <tr>
+      <td><?php echo $no++; ?></td>
+      <td><?php echo $d['tanggal_order']; ?></td>
+      <td><?php echo $d['nama_material']; ?></td>
+      <td><center><?php echo $d['jumlah_material']; ?></td>
+      <td>
+        <center><a type="bottom" class="btn btn-success btn-sm"
+          href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Input Jumlah Pre-Order</a>
+      </td>
+      <td>
+        <center>
+          <a type="button" class="btn btn-danger btn-sm" href="up_hapus.php?id=<?php echo $d['id']; ?>" onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
+        </center>
+      </td>
+    </tr>
+    <?php
+  } ?>
+  </table>
+</div>
+  <!-- akhir preorder -->
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
