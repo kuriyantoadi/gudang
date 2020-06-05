@@ -9,7 +9,7 @@ while ($row = mysqli_fetch_assoc($cek_max)) {
 }
 
 $kode_order =  sprintf("%05s", $no_urut);
-// echo $kode;
+echo $kode_order;
 $tanggal_order = date('d-m-Y');
 mysqli_query($koneksi, "insert into t_order (kode_order, tanggal_order) values('$kode_order','$tanggal_order')");
 

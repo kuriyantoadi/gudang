@@ -64,40 +64,39 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Tampil Data Order</center>
+          <center>Data Tabel Barang</center>
         </h3>
         <form action="update_masuk.php" method="post">
-          <a type="bottom" class="btn btn-primary btn-sm" href="kode-order.php">Tambah Order</a>
-          <br><br>
           <table class="table table-bordered table-hover">
             <tr>
               <th>
-                <center>No
-              </th>
+                <center>No </th>
               <th>
-                <center>ID Order</td>
+                <center>ID Material</td>
               <th>
-                <center>Tanggal Order</td>
+                <center>Nama Material</td>
               <th>
-                <center>Kondisi</td>
+                <center>Jumlah Material</td>
               <th>
-                <center>Lihat</td>
-
+                <center>Jenis Satuan Material</td>
+              <th>
+                <center>Tambah Ke Pre-Order</td>
 
             </tr>
             <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, " SELECT DISTINCT kode_order, tanggal_order, kondisi FROM t_order;");
+          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
             <tr>
-              <td align="center"><?php echo $no++; ?></td>
-              <td align="center"><?php echo $d['kode_order']; ?></td>
-              <td align="center"><?php echo $d['tanggal_order']; ?></td>
-              <td align="center"><center><?php echo $d['kondisi']; ?></td>
+              <td><?php echo $no++; ?></td>
+              <td><?php echo $d['id_material']; ?></td>
+              <td><?php echo $d['nama_material']; ?></td>
+              <td><center><?php echo $d['jumlah_material']; ?></td>
+              <td><center><?php echo $d['jenis_satuan_material']; ?></td>
               <td>
-                <center><a type="bottom" class="btn btn-success btn-sm" href="order.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat</a>
+                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Tambah Ke Pre-Order</a>
               </td>
 
             </tr>
@@ -108,13 +107,64 @@
     </div>
   </div>
 
-  </form>
+    </form>
 
-  <!-- /#page-content-wrapper -->
-
-
+    <!-- /#page-content-wrapper -->
 
 
+
+  <!-- awal preoder -->
+  <div class="container">
+  <h3 class="mt-4" style="margin-bottom: 30px">
+  <center>Tabel Pre-Order</h3>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>
+        <center>No </th>
+      <th>
+        <center>Tanggal Order</th>
+      <th>
+        <center>Nama Material</td>
+      <th>
+        <center>Jumlah Material</td>
+      <th>
+        <center>Input Pre-Order</td>
+      <th>
+        <center>Hapus
+      </th>
+    </tr>
+    <?php
+  include('../../koneksi.php');
+  $kode_order = $_GET['kode_order'];
+
+  $data = mysqli_query($koneksi, "SELECT * from t_order where kode_order=$kode_order");
+  $no =1;
+  while ($d = mysqli_fetch_array($data)) {
+//
+      $cek_material = $d['nama_material'];
+      if (empty($cek_material)) {
+      } ?>
+    <tr>
+      <td><?php echo $no++; ?></td>
+      <td><?php echo $d['tanggal_order']; ?></td>
+      <td><?php echo $d['nama_material']; ?></td>
+      <td><center><?php echo $d['jumlah_material']; ?></td>
+      <td>
+        <center><a type="bottom" class="btn btn-success btn-sm"
+          href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Input Jumlah Pre-Order</a>
+      </td>
+      <td>
+        <center>
+          <a type="button" class="btn btn-danger btn-sm" href="hapus-order.php?id=<?php echo $d['id']; ?>+<?php echo $d['kode_order']; ?>+"
+            onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
+        </center>
+      </td>
+    </tr>
+    <?php
+  } ?>
+  </table>
+</div>
+  <!-- akhir preorder -->
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
