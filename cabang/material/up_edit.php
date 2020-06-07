@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['status']!="pusat") {
+if ($_SESSION['status']!="cabang") {
     header("location:../../index.php?pesan=belum_login");
 }
 
@@ -14,7 +14,7 @@ $jumlah_material = $_POST['jumlah_material'];
 $jenis_satuan_material = $_POST['jenis_satuan_material'];
 
 
-mysqli_query($koneksi, "UPDATE gudang_pusat SET
+mysqli_query($koneksi, "UPDATE gudang_cabang SET
              id='$id',
              id_material='$id_material',
              nama_material='$nama_material',
@@ -23,4 +23,4 @@ mysqli_query($koneksi, "UPDATE gudang_pusat SET
              where id='$id'
              ");
 
- header("location:data-material.php");
+ header("location:index.php");

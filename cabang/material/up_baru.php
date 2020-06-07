@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['status']!="pusat") {
+if ($_SESSION['status']!="cabang") {
     header("location:../../index.php?pesan=belum_login");
 }
 
@@ -12,7 +12,7 @@ $nama_material = $_POST['nama_material'];
 $jumlah_material = $_POST['jumlah_material'];
 $jenis_satuan_material = $_POST['jenis_satuan_material'];
 
-mysqli_query($koneksi, "insert into gudang_pusat values(
+mysqli_query($koneksi, "insert into gudang_cabang values(
 '',
 '$id_material',
 '$nama_material',
@@ -21,4 +21,4 @@ mysqli_query($koneksi, "insert into gudang_pusat values(
 
 )");
 
- header("location:data-material.php");
+ header("location:index.php");

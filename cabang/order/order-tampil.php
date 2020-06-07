@@ -1,9 +1,12 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="pusat") {
+  if ($_SESSION['status']!="cabang") {
       header("location:../login.php?pesan=belum_login");
   }
+  $kode_order = $_GET['kode_order'];
+
   ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,13 +17,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang Pusat</title>
+  <title>Gudang cabang</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../css/simple-sidebar.css" rel="stylesheet">
+  <link href="../../css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 
@@ -36,7 +39,7 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang Pusat</h5>
+        <h5>Halaman Gudang cabang</h5>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -61,46 +64,68 @@
         </div>
       </nav>
 
-      <div class="container">
-        <h2 class="mt-4" style="margin-bottom: 30px"><center>Tampil Stok Barang</center></h2>
-        <table class="table table-bordered table-hover">
-          <tr>
-            <th><center>No</th>
-            <th><center>ID Barang</td>
-            <th><center>Nama Barang</td>
-            <th><center>Jenis Barang</td>
-            <th><center>Model barang</td>
-            <th><center>Jumlah Barang Stok</td>
-          </tr>
-          <?php
-          include('../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from barang_pusat");
-          $no =1;
-          while ($d = mysqli_fetch_array($data)) {
-              ?>
-          <tr>
-            <td><?php echo $no++; ?></td>
-            <td><?php echo $d['kode_barang']; ?></td>
-            <td><?php echo $d['nama_barang']; ?></td>
-            <td><?php echo $d['jenis_barang']; ?></td>
-            <td><?php echo $d['model_barang']; ?></td>
-            <td><center><?php echo $d['jumlah_stok']; ?></td>
 
-
-          </tr>
-          <?php
-          } ?>
-        </table>
-      </div>
     </div>
+  </div>
+
+
     <!-- /#page-content-wrapper -->
 
-  </div>
+
+
+  <!-- awal preoder -->
+  <div class="container">
+  <h3 class="mt-4" style="margin-bottom: 30px">
+  <center>Tabel Pre-Order</h3>
+  <table class="table table-bordered table-hover">
+    <tr>
+      <th>
+        <center>No
+      </th>
+      <th>
+        <center>Tanggal Order
+      </th>
+      <th>
+        <center>Nama Material
+        </td>
+      <th>
+        <center>Jumlah Material
+        </td>
+
+    </tr>
+    <?php
+  include('../../koneksi.php');
+  $kode_order = $_GET['kode_order'];
+
+  $data = mysqli_query($koneksi, "SELECT * from t_order where kode_order=$kode_order");
+  $no =1;
+  while ($d = mysqli_fetch_array($data)) {
+//
+      $cek_material = $d['nama_material'];
+      if (!empty($cek_material)) {
+      } ?>
+    <tr>
+      <td><?php echo $no++; ?></td>
+      <td><?php echo $d['tanggal_order']; ?></td>
+      <td><?php echo $d['nama_material']; ?></td>
+      <td><center><?php echo $d['jumlah_material']; ?></td>
+
+    </tr>
+    <?php
+  } ?>
+  </table>
+</div>
+
+<center><a type="button" class="btn btn-success btn-sm" href="index.php">Kembali</a>
+</center>
+  <!-- akhir preorder -->
   <!-- /#wrapper -->
 
+
+
   <!-- Bootstrap core JavaScript -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Menu Toggle Script -->
   <script>

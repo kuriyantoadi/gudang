@@ -15,7 +15,7 @@ $tanggal_order = date('d-m-Y');
 // echo $kode_order;
 
 
-$data = mysqli_query($koneksi, "select id_material, nama_material from gudang_pusat where id_material='$id_material'");
+$data = mysqli_query($koneksi, "select id_material, nama_material from gudang_cabang where id_material='$id_material'");
 while ($d = mysqli_fetch_array($data)) {
     $t_nama_material = $d['nama_material'];
     $t_id_material = $d['id_material'];

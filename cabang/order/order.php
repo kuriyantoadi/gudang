@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang Pusat</title>
+  <title>Gudang cabang</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang Pusat</h5>
+        <h5>Halaman Gudang cabang</h5>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -68,7 +68,6 @@
         <h3 class="mt-4" style="margin-bottom: 30px">
           <center>Data Tabel Barang</center>
         </h3>
-        <form action="update_masuk.php" method="post">
           <table class="table table-bordered table-hover">
             <tr>
               <th>
@@ -87,7 +86,7 @@
             </tr>
             <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
+          $data = mysqli_query($koneksi, "SELECT * from gudang_cabang");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
@@ -98,7 +97,7 @@
               <td><center><?php echo $d['jumlah_material']; ?></td>
               <td><center><?php echo $d['jenis_satuan_material']; ?></td>
               <td>
-                <center><a type="bottom" class="btn btn-success btn-sm"
+                <center><a type="bottom" class="btn btn-info btn-sm"
                   href="tambah-order.php?id_material=<?php echo $d['id_material']; ?>&kode_order=<?php echo $kode_order ?>">Tambah Ke Pre-Order</a>
               </td>
 
@@ -110,7 +109,6 @@
     </div>
   </div>
 
-    </form>
 
     <!-- /#page-content-wrapper -->
 
@@ -153,7 +151,7 @@
       <td><?php echo $d['nama_material']; ?></td>
       <td><center><?php echo $d['jumlah_material']; ?></td>
       <td>
-        <center><a type="bottom" class="btn btn-success btn-sm"
+        <center><a type="bottom" class="btn btn-info btn-sm"
           href="jml-order.php?id=<?php echo $d['id']; ?>">Input Jumlah Pre-Order</a>
       </td>
       <td>
@@ -167,8 +165,14 @@
   } ?>
   </table>
 </div>
+
+<center><a type="button" class="btn btn-success btn-sm" href="index.php"
+  onclick="return confirm('Anda yakin Input Order Sudah Selesai? ')">Selesai Order</a>
+</center>
   <!-- akhir preorder -->
   <!-- /#wrapper -->
+
+
 
   <!-- Bootstrap core JavaScript -->
   <script src="../../vendor/jquery/jquery.min.js"></script>

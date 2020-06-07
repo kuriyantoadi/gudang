@@ -36,36 +36,14 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang cabang</h5>
+      <?php include('../menu.php'); ?>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item ">
-              <a class="nav-link" href="index.php">Tampil Stok Barang </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="data-material.php">Data Material</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="barang_keluar.php">Input Barang Keluar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../logout.php">Logout</a>
-            </li>
-
-          </ul>
-        </div>
-      </nav>
 
       <div class="container">
-        <h2 class="mt-4" style="margin-bottom: 30px">
-          <center>Input Barang Masuk</center>
-        </h2>
+        <h3 class="mt-4" style="margin-bottom: 30px">
+          <center>Edit Material</center>
+        </h3>
+        <form action="up_edit.php" method="post">
           <?php
             include '../../koneksi.php';
             $id_material = $_GET['id_material'];
@@ -78,33 +56,32 @@
               <td>ID Material</td>
               <td>
                 <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
-                <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>" disabled>
+                <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>" readonly>
               </td>
             </tr>
             <tr>
               <td>Nama Material</td>
               <td>
-                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" disabled>
+                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" required>
               </td>
             </tr>
             <tr>
               <td>Jumlah Material</td>
               <td>
-                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" disabled>
+                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" required>
               </td>
             </tr>
             <tr>
               <td>Jenis Satuan Material</td>
               <td>
-                <input type="text" class="form-control" name="jenis_satuan_material" value="<?php echo $d['jenis_satuan_material'] ?>" disabled>
+                <select class="form-control" name="jenis_satuan_material">
+                  <option value="Meter">Meter</option>
+                  <option value="Batang">Batang</option>
+                  <option value="Pcs">Pcs</option>
+                </select>
               </td>
             </tr>
-            <tr>
-              <td>Jumlah Material Masuk</td>
-              <td>
-                <input type="text" class="form-control" name="material_masuk" required>
-              </td>
-            </tr>
+
 
           </table>
           <center><input type="submit" name="" class="btn btn-primary" value="Update Data Material"></center>
@@ -112,6 +89,7 @@
     </div>
   <?php
             } ?>
+    </form>
 
     <!-- /#page-content-wrapper -->
 

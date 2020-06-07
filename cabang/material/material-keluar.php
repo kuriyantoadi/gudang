@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="pusat") {
+  if ($_SESSION['status']!="cabang") {
       header("location:../login.php?pesan=belum_login");
   }
   ?>
@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang Pusat</title>
+  <title>Gudang cabang</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -36,41 +36,18 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang Pusat</h5>
+      <?php include('../menu.php'); ?>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item ">
-              <a class="nav-link" href="index.php">Tampil Stok Barang </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="data-material.php">Data Material</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="barang_keluar.php">Input Barang Keluar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../logout.php">Logout</a>
-            </li>
-
-          </ul>
-        </div>
-      </nav>
 
       <div class="container">
-        <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Edit Material</center>
-        </h3>
-        <form action="up_edit.php" method="post">
+        <h2 class="mt-4" style="margin-bottom: 30px">
+          <center>Input Barang Keluar</center>
+        </h2>
+        <form action="up_keluar.php" method="post">
           <?php
             include '../../koneksi.php';
             $id_material = $_GET['id_material'];
-            $data = mysqli_query($koneksi, "select * from gudang_pusat where id_material='$id_material'");
+            $data = mysqli_query($koneksi, "select * from gudang_cabang where id_material='$id_material'");
             while ($d = mysqli_fetch_array($data)) {
                 ?>
 
@@ -79,32 +56,33 @@
               <td>ID Material</td>
               <td>
                 <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
-                <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>">
+                <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>" disabled>
               </td>
             </tr>
             <tr>
               <td>Nama Material</td>
               <td>
-                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" required>
+                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" disabled>
               </td>
             </tr>
             <tr>
               <td>Jumlah Material</td>
               <td>
-                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" required>
+                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" disabled>
               </td>
             </tr>
             <tr>
               <td>Jenis Satuan Material</td>
               <td>
-                <select class="form-control" name="jenis_satuan_material">
-                  <option value="Meter">Meter</option>
-                  <option value="Batang">Batang</option>
-                  <option value="Pcs">Pcs</option>
-                </select>
+                <input type="text" class="form-control" name="jenis_satuan_material" value="<?php echo $d['jenis_satuan_material'] ?>" disabled>
               </td>
             </tr>
-
+            <tr>
+              <td>Jumlah Material Keluar</td>
+              <td>
+                <input type="text" class="form-control" name="material_keluar" required>
+              </td>
+            </tr>
 
           </table>
           <center><input type="submit" name="" class="btn btn-primary" value="Update Data Material"></center>

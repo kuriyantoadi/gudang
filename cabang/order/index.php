@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang Pusat</title>
+  <title>Gudang cabang</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang Pusat</h5>
+        <h5>Halaman Gudang cabang</h5>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -67,7 +67,7 @@
           <center>Tampil Data Order</center>
         </h3>
         <form action="update_masuk.php" method="post">
-          <a type="bottom" class="btn btn-primary btn-sm" href="kode-order.php">Tambah Order</a>
+          <a type="bottom" class="btn btn-warning btn-sm" href="kode-order.php">Tambah Order</a>
           <br><br>
           <table class="table table-bordered table-hover">
             <tr>
@@ -96,8 +96,11 @@
               <td align="center"><?php echo $d['kode_order']; ?></td>
               <td align="center"><?php echo $d['tanggal_order']; ?></td>
               <td align="center"><center><?php echo $d['kondisi']; ?></td>
-              <td>
+              <!-- <td>
                 <center><a type="bottom" class="btn btn-success btn-sm" href="order.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat</a>
+              </td> -->
+              <td>
+                <center><a type="bottom" class="btn btn-info btn-sm" href="order-tampil.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat Order</a>
               </td>
 
             </tr>

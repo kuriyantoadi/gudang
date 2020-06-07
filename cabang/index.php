@@ -1,7 +1,7 @@
 <?php
   session_start();
   if ($_SESSION['status']!="cabang") {
-      header("location:../login.php?pesan=belum_login");
+      header("location:../index.php?pesan=belum_login");
   }
   ?>
 <!DOCTYPE html>
@@ -35,62 +35,44 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Cabang</h5>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.php">Tampil Stok Barang </a>
-            </li>
-            <li class="nav-item " >
-              <a class="nav-link" href="barang_masuk.php">Input Barang Masuk</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="barang_keluar.php">Input Barang Keluar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../logout.php">Logout</a>
-            </li>
-
-          </ul>
-        </div>
-      </nav>
+      <?php include('menu.php'); ?>
 
       <div class="container">
-        <h2 class="mt-4" style="margin-bottom: 30px"><center>Tampil Stok Barang</center></h2>
-        <table class="table table-bordered table-hover">
-          <tr>
-            <th><center>No</th>
-            <th><center>ID Barang</td>
-            <th><center>Nama Barang</td>
-            <th><center>Jenis Barang</td>
-            <th><center>Model barang</td>
-            <th><center>Jumlah Barang Stok</td>
-          </tr>
-          <?php
+        <h3 class="mt-4" style="margin-bottom: 30px">
+          <center>Data Material</center>
+        </h3>
+        <form action="update_masuk.php" method="post">
+          <table class="table table-bordered table-hover">
+            <tr>
+              <th>
+                <center>No </th>
+              <th>
+                <center>ID Material</td>
+              <th>
+                <center>Nama Material</td>
+              <th>
+                <center>Jumlah Material</td>
+              <th>
+                <center>Jenis Satuan Material</td>
+
+            </tr>
+            <?php
           include('../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from barang_cabang");
+          $data = mysqli_query($koneksi, "SELECT * from gudang_cabang");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
-          <tr>
-            <td><?php echo $no++; ?></td>
-            <td><?php echo $d['kode_barang']; ?></td>
-            <td><?php echo $d['nama_barang']; ?></td>
-            <td><?php echo $d['jenis_barang']; ?></td>
-            <td><?php echo $d['model_barang']; ?></td>
-            <td><center><?php echo $d['jumlah_stok']; ?></td>
+            <tr>
+              <td><?php echo $no++; ?></td>
+              <td><?php echo $d['id_material']; ?></td>
+              <td><?php echo $d['nama_material']; ?></td>
+              <td><center><?php echo $d['jumlah_material']; ?></td>
+              <td><center><?php echo $d['jenis_satuan_material']; ?></td>
 
-
-          </tr>
-          <?php
+            </tr>
+            <?php
           } ?>
-        </table>
+          </table>
       </div>
     </div>
     <!-- /#page-content-wrapper -->
