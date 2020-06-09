@@ -56,27 +56,41 @@
               <td>ID Material</td>
               <td>
                 <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
-                <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>" disabled>
+                <input type="hidden" name="status_barang" value="Barang Masuk">
+                <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>" readonly>
+              </td>
+            </tr>
+            <tr>
+              <td>Tanggal</td>
+              <td>
+                <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly>
               </td>
             </tr>
             <tr>
               <td>Nama Material</td>
               <td>
-                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" disabled>
+                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" readonly>
               </td>
             </tr>
             <tr>
               <td>Jumlah Material</td>
               <td>
-                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" disabled>
+                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" readonly>
               </td>
             </tr>
             <tr>
               <td>Jenis Satuan Material</td>
               <td>
-                <input type="text" class="form-control" name="jenis_satuan_material" value="<?php echo $d['jenis_satuan_material'] ?>" disabled>
+                <input type="text" class="form-control" name="jenis_satuan_material" value="<?php echo $d['jenis_satuan_material'] ?>" readonly>
               </td>
             </tr>
+            <tr>
+              <td>Penanggung Jawab</td>
+              <td>
+                <input type="text" class="form-control" name="penanggung_jawab" required>
+              </td>
+            </tr>
+
             <tr>
               <td>Jumlah Material Masuk</td>
               <td>
@@ -88,7 +102,7 @@
           <center><input type="submit" name="" class="btn btn-primary" value="Update Data Material"></center>
       </div>
     </div>
-  <?php
+    <?php
             } ?>
     </form>
 
