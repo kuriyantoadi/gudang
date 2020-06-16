@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang pusat</title>
+  <title>Gudang cabang</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang pusat</h5>
+        <h5>Halaman Gudang cabang</h5>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
               <a class="nav-link" href="index.php">Tampil Stok Barang </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="data-material.php">Data Material</a>
+              <a class="nav-link" href="barang_masuk.php">Input Barang Masuk</a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="barang_keluar.php">Input Barang Keluar</a>
@@ -66,52 +66,72 @@
         <h2 class="mt-4" style="margin-bottom: 30px">
           <center>Input Barang Masuk</center>
         </h2>
+        <form action="aksi_tambah.php" method="post">
           <?php
-            include '../../koneksi.php';
-            $id_material = $_GET['id_material'];
-            $data = mysqli_query($koneksi, "select * from gudang_pusat where id_material='$id_material'");
-            while ($d = mysqli_fetch_array($data)) {
-                ?>
+           // memanggil koneksi
+           include('../koneksi.php');
 
+           // jika checkbox yang di pilih lebih 0
+           if (count($_POST['id_barang']) == 0) {
+               header('Location: index.php');
+           }
+
+           foreach ($_POST['id_barang'] as $key=>$val) {
+               $no=1;
+               $id_barang = (int) $_POST['id_barang'][$key];
+               $sql =  'SELECT * FROM barang_cabang';
+               $sql .= ' WHERE id_barang='.$id_barang;
+
+               // execute query
+               // $data = mysqli_query($koneksi, "SELECT * from barang_cabang");
+               $data = mysqli_query($koneksi, $sql);
+               $d = mysqli_fetch_array($data);
+
+               // fetch data
+               $nama_barang = $d['nama_barang'];
+               $jenis_barang = $d['jenis_barang'];
+               $model_barang = $d['model_barang'];
+               $jumlah_stok = $d['jumlah_stok']; ?>
+          <a href="barang_tambah.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-primary" name="button">Input Barang Baru</a>
           <table class="table table-bordered table-hover">
             <tr>
-              <td>ID Material</td>
-              <td>
-                <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
-                <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>" disabled>
-              </td>
-            </tr>
-            <tr>
-              <td>Nama Material</td>
-              <td>
-                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" disabled>
-              </td>
-            </tr>
-            <tr>
-              <td>Jumlah Material</td>
-              <td>
-                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" disabled>
-              </td>
-            </tr>
-            <tr>
-              <td>Jenis Satuan Material</td>
-              <td>
-                <input type="text" class="form-control" name="jenis_satuan_material" value="<?php echo $d['jenis_satuan_material'] ?>" disabled>
-              </td>
-            </tr>
-            <tr>
-              <td>Jumlah Material Masuk</td>
-              <td>
-                <input type="text" class="form-control" name="material_masuk" required>
-              </td>
+              <th>
+                <center>No
+              </th>
+              <th>
+                <center>ID Barang</td>
+              <th>
+                <center>Nama Barang</td>
+              <th>
+                <center>Jenis Barang</td>
+              <th>
+                <center>Model barang</td>
+              <th>
+                <center>Jumlah Barang Stok</td>
+              <th>
+                <center>Jumlah Barang Masuk</td>
             </tr>
 
+            <tr>
+              <td><?php echo $no++; ?></td>
+              <td><?php echo $d['kode_barang']; ?></td>
+              <td><?php echo $nama_barang; ?></td>
+              <td><?php echo $d['jenis_barang']; ?></td>
+              <td><?php echo $d['model_barang']; ?></td>
+              <td><center><?php echo $d['jumlah_stok']; ?></td>
+              <td><center>
+                <input type="hidden" name="id_barang[]" value="<?php echo $id_barang; ?>">
+                <input type="number" name="barang_masuk[]" value="<?php echo $barang_masuk; ?>">
+              </center>
+              </td>
+            </tr>
+            <?php
+           } ?>
           </table>
-          <center><input type="submit" name="" class="btn btn-primary" value="Update Data Material"></center>
+          <center><input type="submit" name="" class="btn btn-success" value="Update Data Barang"></center>
       </div>
     </div>
-  <?php
-            } ?>
+    </form>
 
     <!-- /#page-content-wrapper -->
 

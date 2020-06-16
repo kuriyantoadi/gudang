@@ -36,7 +36,7 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-      <?php include('../menu.php'); ?>
+      <?php include('menu.php'); ?>
 
 
       <div class="container">
@@ -87,14 +87,16 @@
             <tr>
               <td>Penanggung Jawab</td>
               <td>
-                <input type="text" class="form-control" name="penanggung_jawab" required>
+                <input type="text" class="form-control" name="pj_petugas" required>
+                <input type="hidden" class="form-control" name="pj_lapangan" value="-">
+
               </td>
             </tr>
 
             <tr>
               <td>Jumlah Material Masuk</td>
               <td>
-                <input type="text" class="form-control" name="material_masuk" required>
+                <input type="number" class="form-control" name="material_masuk" required>
               </td>
             </tr>
 

@@ -64,53 +64,49 @@
         </div>
       </nav>
 
-      <div class="container">
-        <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Data Tabel Barang</center>
-        </h3>
-          <table class="table table-bordered table-hover">
-            <tr>
-              <th>
-                <center>No </th>
-              <th>
-                <center>ID Material</td>
-              <th>
-                <center>Nama Material</td>
-              <th>
-                <center>Jumlah Material</td>
-              <th>
-                <center>Jenis Satuan Material</td>
-              <th>
-                <center>Tambah Ke Pre-Order</td>
 
-            </tr>
-            <?php
-          include('../../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
-          $no =1;
-          while ($d = mysqli_fetch_array($data)) {
-              ?>
-            <tr>
-              <td><?php echo $no++; ?></td>
-              <td><?php echo $d['id_material']; ?></td>
-              <td><?php echo $d['nama_material']; ?></td>
-              <td><center><?php echo $d['jumlah_material']; ?></td>
-              <td><center><?php echo $d['jenis_satuan_material']; ?></td>
-              <td>
-                <center><a type="bottom" class="btn btn-info btn-sm"
-                  href="tambah-order.php?id_material=<?php echo $d['id_material']; ?>&kode_order=<?php echo $kode_order ?>">Tambah Ke Pre-Order</a>
-              </td>
-
-            </tr>
-            <?php
-          } ?>
-          </table>
-      </div>
     </div>
   </div>
 
 
     <!-- /#page-content-wrapper -->
+
+    <div class="container">
+      <h3 class="mt-4" style="margin-bottom: 30px">
+        <center>Data Material</center>
+      </h3>
+        <table class="table table-bordered table-hover">
+          <tr>
+            <th>
+              <center>No </th>
+            <!-- <th>
+              <center>ID Material</td> -->
+            <th>
+              <center>Nama Material</td>
+            <th>
+              <center>Jumlah Material</td>
+            <th>
+              <center>Jenis Satuan Material</td>
+
+          </tr>
+          <?php
+        include('../../koneksi.php');
+        $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
+        $no =1;
+        while ($d = mysqli_fetch_array($data)) {
+            ?>
+          <tr>
+            <td><?php echo $no++; ?></td>
+            <!-- <td><?php echo $d['id_material']; ?></td> -->
+            <td><?php echo $d['nama_material']; ?></td>
+            <td><center><?php echo $d['jumlah_material']; ?></td>
+            <td><center><?php echo $d['jenis_satuan_material']; ?></td>
+
+          </tr>
+          <?php
+        } ?>
+        </table>
+    </div>
 
 
 
@@ -121,18 +117,24 @@
   <table class="table table-bordered table-hover">
     <tr>
       <th>
-        <center>No </th>
-      <th>
-        <center>Tanggal Order</th>
-      <th>
-        <center>Nama Material</td>
-      <th>
-        <center>Jumlah Material</td>
-      <th>
-        <center>Input Pre-Order</td>
-      <th>
-        <center>Hapus
+        <center>No
       </th>
+      <th>
+        <center>Tanggal Order
+      </th>
+      <th>
+        <center>Nama Material
+        </td>
+      <th>
+        <center>Jumlah Material
+        </td>
+        <th>
+          <center>Acc
+        </th>
+        <th>
+          <center>Reject
+        </th>
+
     </tr>
     <?php
   include('../../koneksi.php');
@@ -150,24 +152,28 @@
       <td><?php echo $d['tanggal_order']; ?></td>
       <td><?php echo $d['nama_material']; ?></td>
       <td><center><?php echo $d['jumlah_material']; ?></td>
-      <td>
-        <center><a type="bottom" class="btn btn-info btn-sm"
-          href="jml-order.php?id=<?php echo $d['id']; ?>">Input Jumlah Pre-Order</a>
-      </td>
-      <td>
-        <center>
-          <a type="button" class="btn btn-danger btn-sm" href="hapus-order.php?id=<?php echo $d['id']; ?>&kode_order=<?php echo $d['kode_order']; ?>"
-            onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
-        </center>
-      </td>
+        <td>
+          <center><a type="bottom" class="btn btn-info btn-sm" href="order-acc.php?id_material=<?php echo $d['id_material']; ?>&&kode_order=<?php echo $d['kode_order'] ?>">Acc</a>
+        </td>
+        <td>
+          <center><a type="bottom" class="btn btn-danger btn-sm" href="order-acc.php?id_material=<?php echo $d['id_material']; ?>&&kode_order=<?php echo $d['kode_order'] ?>">Reject</a>
+        </td>
     </tr>
     <?php
   } ?>
   </table>
 </div>
 
-<center><a type="button" class="btn btn-success btn-sm" href="index.php"
-  onclick="return confirm('Anda yakin Input Order Sudah Selesai? ')">Selesai Order</a>
+<div align="center">
+  <table center>
+    <tr>
+      <td>
+        <center><a type="button" style="margin-bottom: 60px;" class="btn btn-warning btn-md" href="index.php">Kembali</a>
+      </td>
+    </tr>
+  </table>
+</div>
+
 </center>
   <!-- akhir preorder -->
   <!-- /#wrapper -->

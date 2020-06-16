@@ -3,8 +3,6 @@
   if ($_SESSION['status']!="pusat") {
       header("location:../login.php?pesan=belum_login");
   }
-  $kode_order = $_GET['kode_order'];
-
   ?>
 
 <!DOCTYPE html>
@@ -68,6 +66,7 @@
         <h3 class="mt-4" style="margin-bottom: 30px">
           <center>Data Tabel Barang</center>
         </h3>
+        <form action="update_masuk.php" method="post">
           <table class="table table-bordered table-hover">
             <tr>
               <th>
@@ -97,8 +96,7 @@
               <td><center><?php echo $d['jumlah_material']; ?></td>
               <td><center><?php echo $d['jenis_satuan_material']; ?></td>
               <td>
-                <center><a type="bottom" class="btn btn-info btn-sm"
-                  href="tambah-order.php?id_material=<?php echo $d['id_material']; ?>&kode_order=<?php echo $kode_order ?>">Tambah Ke Pre-Order</a>
+                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Tambah Ke Pre-Order</a>
               </td>
 
             </tr>
@@ -109,6 +107,7 @@
     </div>
   </div>
 
+    </form>
 
     <!-- /#page-content-wrapper -->
 
@@ -143,7 +142,7 @@
   while ($d = mysqli_fetch_array($data)) {
 //
       $cek_material = $d['nama_material'];
-      if (!empty($cek_material)) {
+      if (empty($cek_material)) {
       } ?>
     <tr>
       <td><?php echo $no++; ?></td>
@@ -151,12 +150,12 @@
       <td><?php echo $d['nama_material']; ?></td>
       <td><center><?php echo $d['jumlah_material']; ?></td>
       <td>
-        <center><a type="bottom" class="btn btn-info btn-sm"
-          href="jml-order.php?id=<?php echo $d['id']; ?>">Input Jumlah Pre-Order</a>
+        <center><a type="bottom" class="btn btn-success btn-sm"
+          href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Input Jumlah Pre-Order</a>
       </td>
       <td>
         <center>
-          <a type="button" class="btn btn-danger btn-sm" href="hapus-order.php?id=<?php echo $d['id']; ?>&kode_order=<?php echo $d['kode_order']; ?>"
+          <a type="button" class="btn btn-danger btn-sm" href="hapus-order.php?id=<?php echo $d['id']; ?>+<?php echo $d['kode_order']; ?>+"
             onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
         </center>
       </td>
@@ -165,14 +164,8 @@
   } ?>
   </table>
 </div>
-
-<center><a type="button" class="btn btn-success btn-sm" href="index.php"
-  onclick="return confirm('Anda yakin Input Order Sudah Selesai? ')">Selesai Order</a>
-</center>
   <!-- akhir preorder -->
   <!-- /#wrapper -->
-
-
 
   <!-- Bootstrap core JavaScript -->
   <script src="../../vendor/jquery/jquery.min.js"></script>

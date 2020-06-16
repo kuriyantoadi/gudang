@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['status']!="cabang") {
+if ($_SESSION['status']!="pusat") {
     header("location:../../index.php?pesan=belum_login");
 }
 
@@ -23,7 +23,7 @@ $pj_lapangan = $_POST['pj_lapangan'];
 
 echo $status_barang;
 
-mysqli_query($koneksi, "insert into lap_cabang values(
+mysqli_query($koneksi, "insert into lap_pusat values(
 '',
 '$id_material',
 '$nama_material',
@@ -37,7 +37,7 @@ mysqli_query($koneksi, "insert into lap_cabang values(
 )");
 
 
-$data = mysqli_query($koneksi, "SELECT * from gudang_cabang where id=$id");
+$data = mysqli_query($koneksi, "SELECT * from gudang_pusat where id=$id");
 $no =1;
 while ($d = mysqli_fetch_array($data)) {
     $jumlah_material = $d['jumlah_material'];
@@ -47,7 +47,7 @@ while ($d = mysqli_fetch_array($data)) {
 $total_akhir = $jumlah_material-$material_keluar;
 // echo $total_akhir;
 
-mysqli_query($koneksi, "UPDATE gudang_cabang SET
+mysqli_query($koneksi, "UPDATE gudang_pusat SET
              id='$id',
              jumlah_material='$total_akhir'
              where id='$id'

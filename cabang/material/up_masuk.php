@@ -18,7 +18,7 @@ $jumlah_material = $_POST['jumlah_material'];
 $jenis_satuan_material = $_POST['jenis_satuan_material'];
 $status_barang = $_POST['status_barang'];
 $tanggal = $_POST['tanggal'];
-$penanggung_jawab = $_POST['penanggung_jawab'];
+$pj_petugas = $_POST['pj_petugas'];
 
 echo $status_barang;
 
@@ -30,7 +30,8 @@ mysqli_query($koneksi, "insert into lap_cabang values(
 '$jenis_satuan_material',
 '$status_barang',
 '$tanggal',
-'$penanggung_jawab'
+'$pj_petugas',
+'-'
 
 )");
 
@@ -51,4 +52,4 @@ mysqli_query($koneksi, "UPDATE gudang_cabang SET
              where id='$id'
              ");
 
- // header("location:index.php");
+ header("location:index.php");

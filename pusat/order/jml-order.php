@@ -37,7 +37,7 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang pusat</h5>
+        <h5>Halaman pusat</h5>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -49,7 +49,7 @@
               <a class="nav-link" href="index.php">Tampil Stok Barang </a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link" href="data-material.php">Data Material</a>
+              <a class="nav-link" href="barang_masuk.php">Input Barang Masuk</a>
             </li>
             <li class="nav-item ">
               <a class="nav-link" href="barang_keluar.php">Input Barang Keluar</a>
@@ -63,21 +63,34 @@
       </nav>
 
       <div class="container">
-        <h2 class="mt-4" style="margin-bottom: 30px">
-          <center>Input Barang Masuk</center>
-        </h2>
+        <h3 class="mt-4" style="margin-bottom: 30px">
+          <center>Jumlah Pre Order</center>
+        </h3>
+        <form action="jml-up.php" method="post">
           <?php
             include '../../koneksi.php';
-            $id_material = $_GET['id_material'];
-            $data = mysqli_query($koneksi, "select * from gudang_pusat where id_material='$id_material'");
+            $id = $_GET['id'];
+            $data = mysqli_query($koneksi, "select * from t_order where id='$id'");
             while ($d = mysqli_fetch_array($data)) {
                 ?>
 
           <table class="table table-bordered table-hover">
             <tr>
+              <td>Kode Order</td>
+              <td>
+                <input type="text" name="id" value="<?php echo $d['id']; ?>" hidden>
+                <input type="text" class="form-control" name="kode_order" value="<?php echo $d['kode_order'] ?>" readonly>
+              </td>
+            </tr>
+            <tr>
+              <td>Tanggal Order</td>
+              <td>
+                <input type="text" class="form-control" name="tanggal_order" value="<?php echo $d['tanggal_order'] ?>" disabled>
+              </td>
+            </tr>
+            <tr>
               <td>ID Material</td>
               <td>
-                <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
                 <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>" disabled>
               </td>
             </tr>
@@ -88,30 +101,19 @@
               </td>
             </tr>
             <tr>
-              <td>Jumlah Material</td>
+              <td>Jumlah Order Material</td>
               <td>
-                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" disabled>
-              </td>
-            </tr>
-            <tr>
-              <td>Jenis Satuan Material</td>
-              <td>
-                <input type="text" class="form-control" name="jenis_satuan_material" value="<?php echo $d['jenis_satuan_material'] ?>" disabled>
-              </td>
-            </tr>
-            <tr>
-              <td>Jumlah Material Masuk</td>
-              <td>
-                <input type="text" class="form-control" name="material_masuk" required>
+                <input type="number" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" required>
               </td>
             </tr>
 
           </table>
-          <center><input type="submit" name="" class="btn btn-primary" value="Update Data Material"></center>
+          <center><input type="submit" name="" class="btn btn-sm btn-success" value="Update"></center>
       </div>
     </div>
   <?php
             } ?>
+    </form>
 
     <!-- /#page-content-wrapper -->
 

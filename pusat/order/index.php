@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang Pusat</title>
+  <title>Gudang pusat</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -36,67 +36,47 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang Pusat</h5>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item ">
-              <a class="nav-link" href="index.php">Tampil Stok Barang </a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="data-material.php">Data Material</a>
-            </li>
-            <li class="nav-item ">
-              <a class="nav-link" href="barang_keluar.php">Input Barang Keluar</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../logout.php">Logout</a>
-            </li>
-
-          </ul>
-        </div>
-      </nav>
+      <?php include('menu.php'); ?>
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
           <center>Tampil Data Order</center>
         </h3>
         <form action="update_masuk.php" method="post">
+          <a type="bottom" class="btn btn-warning btn-sm" href="kode-order.php">Tambah Order</a>
+          <br><br>
           <table class="table table-bordered table-hover">
             <tr>
               <th>
-                <center>No </th>
+                <center>No
+              </th>
               <th>
-                <center>ID Material</td>
+                <center>ID Order</td>
               <th>
-                <center>Nama Material</td>
+                <center>Tanggal Order</td>
               <th>
-                <center>Jumlah Material</td>
+                <center>Kondisi</td>
               <th>
-                <center>Jenis Satuan Material</td>
-              <th>
-                <center>Tambah Ke Pre-Order</td>
+                <center>Lihat</td>
+
 
             </tr>
             <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
+          $data = mysqli_query($koneksi, " SELECT DISTINCT kode_order, tanggal_order, kondisi FROM t_order;");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
             <tr>
-              <td><?php echo $no++; ?></td>
-              <td><?php echo $d['id_material']; ?></td>
-              <td><?php echo $d['nama_material']; ?></td>
-              <td><center><?php echo $d['jumlah_material']; ?></td>
-              <td><center><?php echo $d['jenis_satuan_material']; ?></td>
+              <td align="center"><?php echo $no++; ?></td>
+              <td align="center"><?php echo $d['kode_order']; ?></td>
+              <td align="center"><?php echo $d['tanggal_order']; ?></td>
+              <td align="center"><center><?php echo $d['kondisi']; ?></td>
+              <!-- <td>
+                <center><a type="bottom" class="btn btn-success btn-sm" href="order.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat</a>
+              </td> -->
               <td>
-                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Tambah Ke Pre-Order</a>
+                <center><a type="bottom" class="btn btn-info btn-sm" href="order-tampil.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat Order</a>
               </td>
 
             </tr>
@@ -107,58 +87,13 @@
     </div>
   </div>
 
-    </form>
+  </form>
 
-    <!-- /#page-content-wrapper -->
+  <!-- /#page-content-wrapper -->
 
 
 
-  <!-- awal preoder -->
-  <div class="container">
-  <h3 class="mt-4" style="margin-bottom: 30px">
-  <center>Tabel Pre-Order</h3>
-  <table class="table table-bordered table-hover">
-    <tr>
-      <th>
-        <center>No </th>
-      <th>
-        <center>Tanggal Order</th>
-      <th>
-        <center>Nama Material</td>
-      <th>
-        <center>Jumlah Material</td>
-      <th>
-        <center>Input Pre-Order</td>
-      <th>
-        <center>Hapus
-      </th>
-    </tr>
-    <?php
-  include('../../koneksi.php');
-  $data = mysqli_query($koneksi, "SELECT * from t_order");
-  $no =1;
-  while ($d = mysqli_fetch_array($data)) {
-      ?>
-    <tr>
-      <td><?php echo $no++; ?></td>
-      <td><?php echo $d['tanggal_order']; ?></td>
-      <td><?php echo $d['nama_material']; ?></td>
-      <td><center><?php echo $d['jumlah_material']; ?></td>
-      <td>
-        <center><a type="bottom" class="btn btn-success btn-sm"
-          href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Input Jumlah Pre-Order</a>
-      </td>
-      <td>
-        <center>
-          <a type="button" class="btn btn-danger btn-sm" href="up_hapus.php?id=<?php echo $d['id']; ?>" onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
-        </center>
-      </td>
-    </tr>
-    <?php
-  } ?>
-  </table>
-</div>
-  <!-- akhir preorder -->
+
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->

@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="cabang") {
+  if ($_SESSION['status']!="pusat") {
       header("location:../login.php?pesan=belum_login");
   }
   ?>
@@ -47,7 +47,7 @@
           <?php
             include '../../koneksi.php';
             $id_material = $_GET['id_material'];
-            $data = mysqli_query($koneksi, "select * from gudang_cabang where id_material='$id_material'");
+            $data = mysqli_query($koneksi, "select * from gudang_pusat where id_material='$id_material'");
             while ($d = mysqli_fetch_array($data)) {
                 ?>
 

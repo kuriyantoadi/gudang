@@ -36,7 +36,7 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
-      <?php include('../menu.php'); ?>
+      <?php include('menu.php'); ?>
 
 
       <div class="container">

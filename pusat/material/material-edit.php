@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="cabang") {
+  if ($_SESSION['status']!="pusat") {
       header("location:../login.php?pesan=belum_login");
   }
   ?>
@@ -40,14 +40,14 @@
 
 
       <div class="container">
-        <h2 class="mt-4" style="margin-bottom: 30px">
-          <center>Input Barang Keluar</center>
-        </h2>
-        <form action="up_keluar.php" method="post">
+        <h3 class="mt-4" style="margin-bottom: 30px">
+          <center>Edit Material</center>
+        </h3>
+        <form action="up_edit.php" method="post">
           <?php
             include '../../koneksi.php';
             $id_material = $_GET['id_material'];
-            $data = mysqli_query($koneksi, "select * from gudang_cabang where id_material='$id_material'");
+            $data = mysqli_query($koneksi, "select * from gudang_pusat where id_material='$id_material'");
             while ($d = mysqli_fetch_array($data)) {
                 ?>
 
@@ -56,53 +56,32 @@
               <td>ID Material</td>
               <td>
                 <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
-                <input type="hidden" name="status_barang" value="Barang Keluar">
-                <input type="hidden" name="status_barang" value="Barang Keluar">
                 <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>" readonly>
-              </td>
-            </tr>
-            <tr>
-              <td>Tanggal</td>
-              <td>
-                <input type="text" class="form-control" name="tanggal" value="<?php echo date('d-m-Y'); ?>" readonly>
               </td>
             </tr>
             <tr>
               <td>Nama Material</td>
               <td>
-                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" readonly>
+                <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" required>
               </td>
             </tr>
             <tr>
               <td>Jumlah Material</td>
               <td>
-                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" readonly>
+                <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" required>
               </td>
             </tr>
             <tr>
               <td>Jenis Satuan Material</td>
               <td>
-                <input type="text" class="form-control" name="jenis_satuan_material" value="<?php echo $d['jenis_satuan_material'] ?>" readonly>
+                <select class="form-control" name="jenis_satuan_material">
+                  <option value="Meter">Meter</option>
+                  <option value="Batang">Batang</option>
+                  <option value="Pcs">Pcs</option>
+                </select>
               </td>
             </tr>
-            <tr>
-              <td>Penanggung Jawab Petugas</td>
-              <td>
-                <input type="text" class="form-control" name="pj_petugas">
-              </td>
-            </tr>
-            <tr>
-              <td>Penanggung Jawab Lapangan</td>
-              <td>
-                <input type="text" class="form-control" name="pj_lapangan">
-              </td>
-            </tr>
-            <tr>
-              <td>Jumlah Material Keluar</td>
-              <td>
-                <input type="text" class="form-control" name="material_keluar" required>
-              </td>
-            </tr>
+
 
           </table>
           <center><input type="submit" name="" class="btn btn-primary" value="Update Data Material"></center>

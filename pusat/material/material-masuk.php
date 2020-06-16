@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="cabang") {
+  if ($_SESSION['status']!="pusat") {
       header("location:../login.php?pesan=belum_login");
   }
   ?>
@@ -41,13 +41,13 @@
 
       <div class="container">
         <h2 class="mt-4" style="margin-bottom: 30px">
-          <center>Input Barang Keluar</center>
+          <center>Input Barang Masuk</center>
         </h2>
-        <form action="up_keluar.php" method="post">
+        <form action="up_masuk.php" method="post">
           <?php
             include '../../koneksi.php';
             $id_material = $_GET['id_material'];
-            $data = mysqli_query($koneksi, "select * from gudang_cabang where id_material='$id_material'");
+            $data = mysqli_query($koneksi, "select * from gudang_pusat where id_material='$id_material'");
             while ($d = mysqli_fetch_array($data)) {
                 ?>
 
@@ -56,8 +56,7 @@
               <td>ID Material</td>
               <td>
                 <input type="hidden" name="id" value="<?php echo $d['id'] ?>">
-                <input type="hidden" name="status_barang" value="Barang Keluar">
-                <input type="hidden" name="status_barang" value="Barang Keluar">
+                <input type="hidden" name="status_barang" value="Barang Masuk">
                 <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material'] ?>" readonly>
               </td>
             </tr>
@@ -86,21 +85,16 @@
               </td>
             </tr>
             <tr>
-              <td>Penanggung Jawab Petugas</td>
+              <td>Penanggung Jawab</td>
               <td>
-                <input type="text" class="form-control" name="pj_petugas">
+                <input type="text" class="form-control" name="pj_petugas" required>
               </td>
             </tr>
+
             <tr>
-              <td>Penanggung Jawab Lapangan</td>
+              <td>Jumlah Material Masuk</td>
               <td>
-                <input type="text" class="form-control" name="pj_lapangan">
-              </td>
-            </tr>
-            <tr>
-              <td>Jumlah Material Keluar</td>
-              <td>
-                <input type="text" class="form-control" name="material_keluar" required>
+                <input type="number" class="form-control" name="material_masuk" required>
               </td>
             </tr>
 
@@ -108,7 +102,7 @@
           <center><input type="submit" name="" class="btn btn-primary" value="Update Data Material"></center>
       </div>
     </div>
-  <?php
+    <?php
             } ?>
     </form>
 

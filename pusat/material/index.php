@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="cabang") {
+  if ($_SESSION['status']!="pusat") {
       header("location:../login.php?pesan=belum_login");
   }
   ?>
@@ -40,14 +40,14 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Data Laporan</center>
+          <center>Data Material</center>
         </h3>
         <form action="update_masuk.php" method="post">
+          <a href="material-baru.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-primary" name="button">Input Material Baru</a>
           <table class="table table-bordered table-hover">
             <tr>
               <th>
-                <center>No
-              </th>
+                <center>No </th>
               <th>
                 <center>ID Material</td>
               <th>
@@ -57,18 +57,17 @@
               <th>
                 <center>Jenis Satuan Material</td>
               <th>
-                <center>Status Barang</td>
+                <center>Material Masuk</td>
               <th>
-                <center>Tanggal</td>
+                <center>Material Keluar</td>
+              <!-- <th>
+                <center>Edit</td>
               <th>
-                <center>PJ. Petugas</td>
-              <th>
-                <center>PJ. Lapangan</td>
-
+                <center>Hapus</td> -->
             </tr>
             <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from lap_cabang");
+          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
@@ -76,25 +75,22 @@
               <td><?php echo $no++; ?></td>
               <td><?php echo $d['id_material']; ?></td>
               <td><?php echo $d['nama_material']; ?></td>
+              <td><center><?php echo $d['jumlah_material']; ?></td>
+              <td><center><?php echo $d['jenis_satuan_material']; ?></td>
               <td>
-                <center><?php echo $d['jumlah_material']; ?>
+                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Material Masuk</a>
               </td>
               <td>
-                <center><?php echo $d['jenis_satuan_material']; ?>
+                <center><a type="bottom" class="btn btn-primary btn-sm" href="material-keluar.php?id_material=<?php echo $d['id_material']; ?>">Material Keluar</a>
+              </td>
+              <!-- <td>
+                <center><a type="bottom" class="btn btn-warning btn-sm" href="material-edit.php?id_material=<?php echo $d['id_material']; ?>">Edit</a>
               </td>
               <td>
-                <center><?php echo $d['status_barang']; ?>
-              </td>
-              <td>
-                <center><?php echo $d['tanggal']; ?>
-              </td>
-              <td>
-                <center><?php echo $d['pj_petugas']; ?>
-              </td>
-              <td>
-                <center><?php echo $d['pj_lapangan']; ?>
-              </td>
-
+                <center>
+                  <a type="button" class="btn btn-danger btn-sm" href="up_hapus.php?id=<?php echo $d['id']; ?>" onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
+                </center>
+              </td> -->
             </tr>
             <?php
           } ?>
