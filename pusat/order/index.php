@@ -43,7 +43,6 @@
           <center>Tampil Data Order</center>
         </h3>
         <form action="update_masuk.php" method="post">
-          <a type="bottom" class="btn btn-warning btn-sm" href="kode-order.php">Tambah Order</a>
           <br><br>
           <table class="table table-bordered table-hover">
             <tr>
@@ -54,8 +53,6 @@
                 <center>ID Order</td>
               <th>
                 <center>Tanggal Order</td>
-              <th>
-                <center>Kondisi</td>
               <th>
                 <center>Lihat</td>
 
@@ -71,7 +68,6 @@
               <td align="center"><?php echo $no++; ?></td>
               <td align="center"><?php echo $d['kode_order']; ?></td>
               <td align="center"><?php echo $d['tanggal_order']; ?></td>
-              <td align="center"><center><?php echo $d['kondisi']; ?></td>
               <!-- <td>
                 <center><a type="bottom" class="btn btn-success btn-sm" href="order.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat</a>
               </td> -->

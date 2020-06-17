@@ -127,12 +127,13 @@
 
 
   <center>Tabel Pre-Order</h3>
+    <form action="acc-up.php" method="post">
   <table class="table table-bordered table-hover">
-
     <tr>
       <td>Nama Material</td>
       <td>
         <input type="text" name="id_material" value="<?php echo $d['id_material']; ?>" hidden>
+        <input type="text" name="kode_order" value="<?php echo $d['kode_order']; ?>" hidden>
         <input type="text" name="nama_material" value="<?php echo $d['nama_material'] ?>" readonly>
       </td>
     </tr>
@@ -151,8 +152,7 @@
     <tr>
       <td>Kondisi</td>
       <td>
-        <textarea name="status">
-        </textarea>
+        <textarea name="kondisi"></textarea>
       </td>
     </tr>
     <tr>
@@ -160,6 +160,8 @@
         <center><input type="submit" name="" value="Update">
       </td>
     </tr>
+  </form>
+
   </table>
 <?php
   } ?>

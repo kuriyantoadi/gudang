@@ -90,7 +90,13 @@
         </td>
       <th>
         <center>Jumlah Material
-        </td>
+      </td>
+      <th>
+        <center>Kondisi
+      </th>
+      <th>
+        <center>Status
+      </th>
 
     </tr>
     <?php
@@ -109,6 +115,9 @@
       <td><?php echo $d['tanggal_order']; ?></td>
       <td><?php echo $d['nama_material']; ?></td>
       <td><center><?php echo $d['jumlah_material']; ?></td>
+      <td><center><?php echo $d['kondisi']; ?></td>
+      <td><center><?php echo $d['status']; ?></td>
+
 
     </tr>
     <?php

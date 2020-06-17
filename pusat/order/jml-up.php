@@ -17,7 +17,5 @@ mysqli_query($koneksi, "UPDATE t_order SET
              where id='$id'
              ");
 
-// echo $kode_order;
-// echo $id;
-// echo $jumlah_material;
+
 header("location:order.php?kode_order=$kode_order");

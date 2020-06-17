@@ -66,7 +66,7 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Data Tabel Barang</center>
+          <center>Data Tabel Material Pusat</center>
         </h3>
           <table class="table table-bordered table-hover">
             <tr>
@@ -86,7 +86,7 @@
             </tr>
             <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from gudang_cabang");
+          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
