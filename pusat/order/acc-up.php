@@ -36,4 +36,4 @@ mysqli_query($koneksi, "UPDATE t_order SET
                 status='$status' where id_material='$id_material' and kode_order='$kode_order'
               ")or die(mysqli_error($koneksi));
 
-// header("location:order.php?kode_order=$kode_order");
+header("location:order.php?kode_order=$kode_order");
