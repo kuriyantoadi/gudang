@@ -62,7 +62,7 @@
             </tr>
             <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, " SELECT DISTINCT kode_order, tanggal_order, kondisi FROM t_order;");
+          $data = mysqli_query($koneksi, " SELECT DISTINCT kode_order, tanggal_order, kondisi FROM t_order ORDER BY kode_order DESC;");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>

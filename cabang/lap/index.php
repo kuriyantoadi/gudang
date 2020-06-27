@@ -40,7 +40,7 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Data Laporan</center>
+          <center>Data Laporan Material</center>
         </h3>
         <form action="update_masuk.php" method="post">
           <table class="table table-bordered table-hover">

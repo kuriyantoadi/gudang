@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="pusat") {
+  if ($_SESSION['status']!="cabang") {
       header("location:../login.php?pesan=belum_login");
   }
   ?>
@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang pusat</title>
+  <title>Gudang cabang</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -40,56 +40,48 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Tampil Data Order</center>
+          <center>Data Laporan Material</center>
         </h3>
         <form action="update_masuk.php" method="post">
-          <br><br>
           <table class="table table-bordered table-hover">
             <tr>
-              <th>
-                <center>No
-              </th>
-              <th>
-                <center>ID Order</td>
-              <th>
-                <center>Tanggal Order</td>
-              <th>
-                <center>Lihat</td>
-
-
+              <th rowspan="3"><center>No</th>
+              <th colspan="4" rowspan="2"><center>Status Pre Order</th>
+              <th colspan="4"><center>Status Transaksi</th>
+            </tr>
+            <tr>
+              <th colspan="2"><center>Di Kirim</th>
+              <th colspan="2"><center>Di Terima</th>
+            </tr>
+            <tr>
+              <th><center>Id Order</th>
+              <th><center>Acc</th>
+              <th><center>Reject</th>
+              <th><center>Keterangan</th>
+              <th><center>Waktu</th>
+              <th><center>Nama Ekspedisi</th>
+              <th><center>Waktu</th>
+              <th><center>Nama Penerima</th>
             </tr>
             <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, " SELECT DISTINCT kode_order, tanggal_order, kondisi FROM t_order ORDER BY tanggal_order DESC;");
+          $data = mysqli_query($koneksi, "SELECT * from lap_cabang ");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
-            <tr>
-              <td align="center"><?php echo $no++; ?></td>
-              <td align="center"><?php echo $d['kode_order']; ?></td>
-              <td align="center"><?php echo $d['tanggal_order']; ?></td>
-              <!-- <td>
-                <center><a type="bottom" class="btn btn-success btn-sm" href="order.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat</a>
-              </td> -->
-              <td>
-                <center><a type="bottom" class="btn btn-info btn-sm" href="order-tampil.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat Order</a>
-              </td>
-
-            </tr>
+              <tr>
+                <td><center><?php echo $no++ ?></td>
+              </tr>
             <?php
           } ?>
           </table>
       </div>
     </div>
+    </form>
+
+    <!-- /#page-content-wrapper -->
+
   </div>
-
-  </form>
-
-  <!-- /#page-content-wrapper -->
-
-
-
-
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
