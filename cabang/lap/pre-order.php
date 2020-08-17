@@ -43,7 +43,7 @@
           <center>Data Laporan Material</center>
         </h3>
         <form action="update_masuk.php" method="post">
-          <table class="table table-bordered table-hover">
+          <table class="table table-bordered">
             <tr>
               <th rowspan="3"><center>No</th>
               <th colspan="4" rowspan="2"><center>Status Pre Order</th>
@@ -55,8 +55,8 @@
             </tr>
             <tr>
               <th><center>Id Order</th>
-              <th><center>Acc</th>
-              <th><center>Reject</th>
+              <th><center>Nama Material</th>
+              <th><center>Kondisi</th>
               <th><center>Keterangan</th>
               <th><center>Waktu</th>
               <th><center>Nama Ekspedisi</th>
@@ -65,12 +65,20 @@
             </tr>
             <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from lap_cabang ");
+          $data = mysqli_query($koneksi, "SELECT * from t_order ");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
               <tr>
                 <td><center><?php echo $no++ ?></td>
+                <td><center><?php echo $d['kode_order']; ?></td>
+                <td><center><?php echo $d['nama_material']; ?></td>
+                <td><center><?php echo $d['status']; ?></td>
+                <td><center><?php echo $d['kondisi']; ?></td>
+                <td><center><?php echo $d['tgl_kirim']; ?></td>
+                <td><center><?php echo $d['ekspedisi']; ?></td>
+                <td><center><?php echo $d['tgl_terima']; ?></td>
+                <td><center><?php echo $d['nama_penerima']; ?></td>
               </tr>
             <?php
           } ?>

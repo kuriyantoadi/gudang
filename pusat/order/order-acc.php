@@ -132,32 +132,80 @@
     <tr>
       <td>Nama Material</td>
       <td>
-        <input type="text" name="id_material" value="<?php echo $d['id_material']; ?>" hidden>
-        <input type="text" name="kode_order" value="<?php echo $d['kode_order']; ?>" hidden>
-        <input type="text" name="nama_material" value="<?php echo $d['nama_material'] ?>" readonly>
+        <input type="text" class="form-control" name="id_material" value="<?php echo $d['id_material']; ?>" hidden>
+        <input type="text" class="form-control" name="kode_order" value="<?php echo $d['kode_order']; ?>" hidden>
+        <input type="text" class="form-control" name="nama_material" value="<?php echo $d['nama_material'] ?>" readonly>
       </td>
     </tr>
     <tr>
       <td>Jumlah Material</td>
       <td>
-        <input type="text" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" readonly>
+        <input type="text" class="form-control" name="jumlah_material" value="<?php echo $d['jumlah_material'] ?>" readonly>
       </td>
     </tr>
     <tr>
       <td>Status</td>
       <td>
-        <input type="text" name="status" value="Acc" readonly>
+        <input type="text" class="form-control" name="status" value="ACC" readonly>
       </td>
     </tr>
     <tr>
-      <td>Kondisi</td>
+      <td>Ekpedisi</td>
       <td>
-        <textarea name="kondisi"></textarea>
+        <input type="text" class="form-control" name="ekspedisi" value="" required>
+      </td>
+    </tr>
+    <tr>
+      <td>Warehouse</td>
+      <td>
+        <input type="text" class="form-control" name="warehouse" value="" required>
+      </td>
+    </tr>
+    <tr>
+      <td>Devision</td>
+      <td>
+        <input type="text" class="form-control" name="devision" value="" required>
+      </td>
+    </tr>
+    <tr>
+      <td>Origin Place</td>
+      <td>
+        <input type="text" class="form-control" name="origin_place" value="" required>
+      </td>
+    </tr>
+    <tr>
+      <td>Destionation</td>
+      <td>
+        <input type="text" class="form-control" name="destionation" value="" required>
+      </td>
+    </tr>
+    <tr>
+      <td>PJ. Warehouse Pusat</td>
+      <td>
+        <input type="text" class="form-control" name="pj_warehouse_pusat" value="" required>
+      </td>
+    </tr>
+    <tr>
+      <td>PJ. Ekspedisi</td>
+      <td>
+        <input type="text" class="form-control" name="pj_ekspedisi" value="" required>
+      </td>
+    </tr>
+    <tr>
+      <td>PJ. Warehouse Cabang</td>
+      <td>
+        <input type="text" class="form-control" name="pj_warehouse_cbg" value="" required>
+      </td>
+    </tr>
+    <tr>
+      <td>Driver</td>
+      <td>
+        <input type="text" class="form-control" name="driver" value="" required>
       </td>
     </tr>
     <tr>
       <td colspan="2">
-        <center><input type="submit" name="" value="Update">
+        <center><input type="submit" name="" value="Update" class="btn btn-info">
       </td>
     </tr>
   </form>

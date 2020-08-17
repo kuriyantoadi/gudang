@@ -14,13 +14,19 @@
         <a class="nav-link" href="order/index.php">Pre-Order</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="lap/index.php">Laporan</a>
+        <a class="nav-link" href="lap/index.php">Lap. Material</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="lap/pre-order.php">Lap. Pre-Order</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="lap/surat_jalan.php">Surat Jalan</a>
       </li>
       <!-- <li class="nav-item ">
         <a class="nav-link" href="order/index.php">Pre-Order</a>
       </li> -->
       <li class="nav-item">
-        <a class="nav-link" href="../../logout.php">Logout</a>
+        <a class="nav-link" href="../logout.php">Logout</a>
       </li>
 
     </ul>

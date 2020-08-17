@@ -18,6 +18,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../plugins/datatables/css/jquery.dataTables.min.css">
 
   <!-- Custom styles for this template -->
   <link href="../css/simple-sidebar.css" rel="stylesheet">
@@ -42,7 +43,8 @@
           <center>Data Material</center>
         </h3>
         <form action="update_masuk.php" method="post">
-          <table class="table table-bordered table-hover">
+          <table id="example" class="table table-bordered table-hover">
+            <thead>
             <tr>
               <th>
                 <center>No </th>
@@ -56,6 +58,7 @@
                 <center>Jenis Satuan Material</td>
 
             </tr>
+          </thead>
             <?php
           include('../koneksi.php');
           $data = mysqli_query($koneksi, "SELECT * from gudang_cabang");
@@ -83,6 +86,7 @@
   <!-- Bootstrap core JavaScript -->
   <script src="../vendor/jquery/jquery.min.js"></script>
   <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../plugins/datatables/js/jquery.dataTables.min.js"></script>
 
   <!-- Menu Toggle Script -->
   <script>
@@ -93,5 +97,9 @@
   </script>
 
 </body>
-
+<script type="text/javascript">
+  $(document).ready(function() {
+        $('#example').DataTable();
+  });
+</script>
 </html>

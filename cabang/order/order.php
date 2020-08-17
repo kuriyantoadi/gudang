@@ -166,7 +166,7 @@
   </table>
 </div>
 
-<center><a type="button" class="btn btn-success btn-sm" href="index.php"
+<center><a type="button" style="margin-bottom: 40px;"  class="btn btn-success btn-sm" href="index.php"
   onclick="return confirm('Anda yakin Input Order Sudah Selesai? ')">Selesai Order</a>
 </center>
   <!-- akhir preorder -->

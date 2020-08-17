@@ -86,6 +86,9 @@
         <center>Tanggal Order
       </th>
       <th>
+        <center>Kode Order
+      </th>
+      <th>
         <center>Nama Material
         </td>
       <th>
@@ -97,6 +100,7 @@
       <th>
         <center>Status
       </th>
+      
 
     </tr>
     <?php
@@ -113,6 +117,7 @@
     <tr>
       <td><?php echo $no++; ?></td>
       <td><?php echo $d['tanggal_order']; ?></td>
+      <td><?php echo $d['kode_order']; ?></td>
       <td><?php echo $d['nama_material']; ?></td>
       <td><center><?php echo $d['jumlah_material']; ?></td>
       <td><center><?php echo $d['kondisi']; ?></td>

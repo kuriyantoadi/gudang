@@ -14,7 +14,10 @@
         <a class="nav-link" href="index.php">Pre-Order</a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="../lap/index.php">Laporan</a>
+        <a class="nav-link" href="../lap/index.php">Lap. Material</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="../lap/pre-order.php">Lap. Pre-Order</a>
       </li>
       <!-- <li class="nav-item ">
         <a class="nav-link" href="order/index.php">Pre-Order</a>

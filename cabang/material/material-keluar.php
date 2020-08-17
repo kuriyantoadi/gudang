@@ -40,9 +40,9 @@
 
 
       <div class="container">
-        <h2 class="mt-4" style="margin-bottom: 30px">
+        <h4 class="mt-4" style="margin-bottom: 30px">
           <center>Input Barang Keluar</center>
-        </h2>
+        </h4>
         <form action="up_keluar.php" method="post">
           <?php
             include '../../koneksi.php';
@@ -105,7 +105,7 @@
             </tr>
 
           </table>
-          <center><input type="submit" name="" class="btn btn-primary" value="Update Data Material"></center>
+          <center><input type="submit" name="" style="margin-bottom: 40px" class="btn btn-success btn-sm" value="Update Data Material"></center>
       </div>
     </div>
   <?php

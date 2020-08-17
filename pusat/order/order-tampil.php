@@ -128,6 +128,7 @@
       <th>
         <center>Jumlah Material
         </td>
+        <th><center>Ekspedisi</th>
         <th>
           <center>kondisi
         </th>
@@ -135,10 +136,10 @@
           <center>Status
         </td>
         <th>
-          <center>Acc
+          <center>ACC
         </th>
         <th>
-          <center>Reject
+          <center>REJECT
         </th>
 
 
@@ -161,10 +162,9 @@
       <td><?php echo $d['tanggal_order']; ?></td>
       <td><?php echo $d['nama_material']; ?></td>
       <td><center><?php echo $d['jumlah_material']; ?></td>
+      <td><center><?php echo $d['ekspedisi']; ?></td>
       <td><center><?php echo $d['status']; ?></td>
-      <td>
-        <center><?php echo $d['kondisi']; ?>
-      </td>
+      <td><center><?php echo $d['kondisi']; ?></td>
 <?php
     //validasi jika npsn kosong
     $cek_acc = $d['status'];
