@@ -62,6 +62,9 @@
               <th>
                 <center>Terima Order
               </th>
+              <th>
+                <center>Cetak
+              </th>
 
 
             </tr>
@@ -84,6 +87,9 @@
               </td>
               <td>
                 <center><a type="bottom" class="btn btn-success btn-sm" href="order-terima.php?kode_order=<?php echo $d['kode_order'] ?>">Terima Order</a>
+              </td>
+              <td>
+                <center><a type="bottom" class="btn btn-warning btn-sm" href="cetak-preorder.php?kode_order=<?php echo $d['kode_order'] ?>">Cetak</a>
               </td>
             </tr>
             <?php
@@ -113,12 +119,14 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+
+    $(document).ready(function() {
+          $('#example').DataTable();
+    });
   </script>
 
 </body>
 <script type="text/javascript">
-  $(document).ready(function() {
-        $('#example').DataTable();
-  });
+
 </script>
 </html>
