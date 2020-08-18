@@ -1,7 +1,7 @@
 <?php
   session_start();
   if ($_SESSION['status']!="pusat") {
-      header("location:../login.php?pesan=belum_login");
+      header("location:../index.php?pesan=belum_login");
   }
 
   ?>

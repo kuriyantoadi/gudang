@@ -82,7 +82,7 @@
             <tr>
               <td>Kondisi</td>
               <td>
-                <input type="text" class="form-control" name="kondisi" value="<?php echo $d['kondisi'] ?>" readonly>
+                <input type="text" class="form-control" name="kondisi" value="<?php echo $d['kondisi'] ?>">
               </td>
             </tr>
             <tr>
