@@ -34,9 +34,9 @@ while ($d = mysqli_fetch_array($data)) {
 }
 
 $acc_material = $cek_material - $jumlah_material;
-echo $acc_material;
-echo "<br>";
-echo $id_material;
+// echo $acc_material;
+// echo "<br>";
+// echo $id_material;
 
 $cek = mysqli_query($koneksi, "UPDATE gudang_pusat SET
              jumlah_material='$acc_material'
