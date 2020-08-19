@@ -43,7 +43,7 @@
         <h3 class="mt-4" style="margin-bottom: 30px">
           <center>Data Laporan Material</center>
         </h3>
-        <form action="update_masuk.php" method="post">
+          <button class="btn btn-danger btn-sm" style="margin-bottom: 20px" onclick="cetak()">Cetak Laporan</button>
           <table id="example" class="table table-bordered table-hover">
             <thead>
             <tr>
@@ -105,7 +105,6 @@
           </table>
       </div>
     </div>
-    </form>
 
     <!-- /#page-content-wrapper -->
 
@@ -127,6 +126,10 @@
     $(document).ready(function() {
           $('#example').DataTable();
     });
+
+    function cetak(){
+      window.print();
+    		}
   </script>
 
 </body>

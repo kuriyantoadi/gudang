@@ -43,9 +43,9 @@
         <h3 class="mt-4" style="margin-bottom: 30px">
           <center>Data Laporan Material</center>
         </h3>
-        <form action="update_masuk.php" method="post">
-          <table id="example" class="table table-bordered table-hover">
-            <thead>
+        <button class="btn btn-danger btn-sm" style="margin-bottom: 20px" onclick="cetak()">Cetak Laporan</button>
+        <table id="example" class="table table-bordered table-hover">
+          <thead>
             <tr>
               <th>
                 <center>No
@@ -70,42 +70,41 @@
             </tr>
           </thead>
 
-            <?php
+          <?php
           include('../../koneksi.php');
           $data = mysqli_query($koneksi, "SELECT * from lap_pusat");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
-            <tr>
-              <td><?php echo $no++; ?></td>
-              <td><?php echo $d['id_material']; ?></td>
-              <td><?php echo $d['nama_material']; ?></td>
-              <td>
-                <center><?php echo $d['jumlah_material']; ?>
-              </td>
-              <td>
-                <center><?php echo $d['jenis_satuan_material']; ?>
-              </td>
-              <td>
-                <center><?php echo $d['status_barang']; ?>
-              </td>
-              <td>
-                <center><?php echo $d['tanggal']; ?>
-              </td>
-              <td>
-                <center><?php echo $d['pj_petugas']; ?>
-              </td>
-              <td>
-                <center><?php echo $d['pj_lapangan']; ?>
-              </td>
+          <tr>
+            <td><?php echo $no++; ?></td>
+            <td><?php echo $d['id_material']; ?></td>
+            <td><?php echo $d['nama_material']; ?></td>
+            <td>
+              <center><?php echo $d['jumlah_material']; ?>
+            </td>
+            <td>
+              <center><?php echo $d['jenis_satuan_material']; ?>
+            </td>
+            <td>
+              <center><?php echo $d['status_barang']; ?>
+            </td>
+            <td>
+              <center><?php echo $d['tanggal']; ?>
+            </td>
+            <td>
+              <center><?php echo $d['pj_petugas']; ?>
+            </td>
+            <td>
+              <center><?php echo $d['pj_lapangan']; ?>
+            </td>
 
-            </tr>
-            <?php
+          </tr>
+          <?php
           } ?>
-          </table>
+        </table>
       </div>
     </div>
-    </form>
 
     <!-- /#page-content-wrapper -->
 
@@ -125,8 +124,12 @@
     });
 
     $(document).ready(function() {
-          $('#example').DataTable();
+      $('#example').DataTable();
     });
+
+    function cetak() {
+      window.print();
+    }
   </script>
 
 </body>
