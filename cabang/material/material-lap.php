@@ -1,9 +1,10 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="pusat") {
-      header("location:../index.php?pesan=belum_login");
+  if ($_SESSION['status']!="cabang") {
+      header("location:../login.php?pesan=belum_login");
   }
   ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,17 +15,14 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang Pusat</title>
+  <title>Gudang cabang</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../plugins/datatables/css/jquery.dataTables.min.css">
+  <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../plugins/datatables/css/jquery.dataTables.min.css">
 
   <!-- Custom styles for this template -->
-  <link href="../css/simple-sidebar.css" rel="stylesheet">
-
-  <!-- CSS only -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="../../css/simple-sidebar.css" rel="stylesheet">
 
 </head>
 
@@ -43,14 +41,15 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Data Material</center>
+          <center>Data Laporan Material</center>
         </h3>
         <form action="update_masuk.php" method="post">
           <table id="example" class="table table-bordered table-hover">
             <thead>
             <tr>
               <th>
-                <center>No </th>
+                <center>No
+              </th>
               <th>
                 <center>ID Material</td>
               <th>
@@ -59,13 +58,21 @@
                 <center>Jumlah Material</td>
               <th>
                 <center>Jenis Satuan Material</td>
+              <th>
+                <center>Status Barang</td>
+              <th>
+                <center>Tanggal</td>
+              <th>
+                <center>PJ. Petugas</td>
+              <th>
+                <center>PJ. Lapangan</td>
 
             </tr>
           </thead>
-          <tbody>
+
             <?php
-          include('../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
+          include('../../koneksi.php');
+          $data = mysqli_query($koneksi, "SELECT * from lap_cabang");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
@@ -73,25 +80,42 @@
               <td><?php echo $no++; ?></td>
               <td><?php echo $d['id_material']; ?></td>
               <td><?php echo $d['nama_material']; ?></td>
-              <td><center><?php echo $d['jumlah_material']; ?></td>
-              <td><center><?php echo $d['jenis_satuan_material']; ?></td>
+              <td>
+                <center><?php echo $d['jumlah_material']; ?>
+              </td>
+              <td>
+                <center><?php echo $d['jenis_satuan_material']; ?>
+              </td>
+              <td>
+                <center><?php echo $d['status_barang']; ?>
+              </td>
+              <td>
+                <center><?php echo $d['tanggal']; ?>
+              </td>
+              <td>
+                <center><?php echo $d['pj_petugas']; ?>
+              </td>
+              <td>
+                <center><?php echo $d['pj_lapangan']; ?>
+              </td>
 
             </tr>
             <?php
           } ?>
-        </tbody>
           </table>
       </div>
     </div>
+    </form>
+
     <!-- /#page-content-wrapper -->
 
   </div>
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="../plugins/datatables/js/jquery.dataTables.min.js"></script>
+  <script src="../../vendor/jquery/jquery.min.js"></script>
+  <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../plugins/datatables/js/jquery.dataTables.min.js"></script>
 
   <!-- Menu Toggle Script -->
   <script>
@@ -99,12 +123,12 @@
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
+
+    $(document).ready(function() {
+          $('#example').DataTable();
+    });
   </script>
 
 </body>
-<script type="text/javascript">
-  $(document).ready(function() {
-        $('#example').DataTable();
-  });
-</script>
+
 </html>

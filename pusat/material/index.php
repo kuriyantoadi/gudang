@@ -45,6 +45,7 @@
         </h3>
         <form action="update_masuk.php" method="post">
           <a href="material-baru.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-primary" name="button">Input Material Baru</a>
+          <a href="material-lap.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-warning" name="button">Laporan Material</a>
           <table id="example" class="table table-bordered table-hover">
             <thead>
             <tr>

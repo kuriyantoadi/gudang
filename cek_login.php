@@ -28,11 +28,11 @@ if ($cek > 0) {
     } elseif ($login['level']=="pusat") {
         $_SESSION['username'] = $username;
         $_SESSION['status'] = "pusat";
-        header("location:pusat/index.php");
+        header("location:pusat/material/index.php");
     } elseif ($login['level']=="cabang") {
         $_SESSION['username'] = $username;
         $_SESSION['status'] = "cabang";
-        header("location:cabang/index.php");
+        header("location:cabang/material/index.php");
     } else {
         echo "gagal1";
         // header("location:index.php?pesan=gagal1");

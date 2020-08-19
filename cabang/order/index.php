@@ -44,7 +44,8 @@
           <center>Tampil Data Order</center>
         </h3>
         <form action="update_masuk.php" method="post">
-          <a type="bottom" class="btn btn-warning btn-sm" href="kode-order.php">Tambah Order</a>
+          <a type="bottom" style="margin-right: 5px" class="btn btn-primary btn-sm" href="kode-order.php">Tambah Order</a>
+          <a type="bottom" class="btn btn-warning btn-sm" href="lap-preordr.php">Laporan Order</a>
           <br><br>
           <table id="example" class="table table-bordered table-hover">
             <thead>
@@ -89,7 +90,7 @@
                 <center><a type="bottom" class="btn btn-success btn-sm" href="order-terima.php?kode_order=<?php echo $d['kode_order'] ?>">Terima Order</a>
               </td>
               <td>
-                <center><a type="bottom" class="btn btn-warning btn-sm" href="cetak-preorder.php?kode_order=<?php echo $d['kode_order'] ?>">Cetak</a>
+                <center><a type="bottom" class="btn btn-danger btn-sm" href="cetak-preorder.php?kode_order=<?php echo $d['kode_order'] ?>">Cetak</a>
               </td>
             </tr>
             <?php

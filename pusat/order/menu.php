@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-  <h5><a href="index.php">Halaman pusat</a></h5>
+  <h5><a href="index.php">Halaman Pusat</a></h5>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -11,20 +11,8 @@
         <a class="nav-link" href="../material/index.php">Menu Material </a>
       </li>
       <li class="nav-item active" >
-        <a class="nav-link" href="index.php">Pre-Order</a>
+        <a class="nav-link" href="../order/index.php">Order</a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="../lap/index.php">Lap. Material</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="../lap/pre-order.php">Lap. Pre-Order</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="../lap/surat_jalan.php">Surat Jalan</a>
-      </li>
-      <!-- <li class="nav-item ">
-        <a class="nav-link" href="order/index.php">Pre-Order</a>
-      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="../../logout.php">Logout</a>
       </li>

@@ -1,7 +1,7 @@
 <?php
   session_start();
   if ($_SESSION['status']!="pusat") {
-      header("location:../login.php?pesan=belum_login");
+      header("location:../index.php?pesan=belum_login");
   }
   ?>
 
@@ -15,11 +15,12 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang pusat</title>
+  <title>Gudang Pusat</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../../plugins/datatables/css/jquery.dataTables.min.css">
+
 
   <!-- Custom styles for this template -->
   <link href="../../css/simple-sidebar.css" rel="stylesheet">
@@ -41,66 +42,58 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Tampil Data Order</center>
+          <center>Data Laporan Pre-Order</center>
         </h3>
         <form action="update_masuk.php" method="post">
-
-          <a href="lap-preorder.php" style="margin-bottom: 20px" type="bottom" class="btn btn-warning btn-sm" >Laporan PreOrder</a>
-          <table id="example" class="table table-bordered table-hover">
+          <table id="example" class="table table-bordered">
             <thead>
             <tr>
-              <th>
-                <center>No
-              </th>
-              <th>
-                <center>ID Order</td>
-              <th>
-                <center>Tanggal Order</td>
-              <th>
-                <center>Status Order
-              </th>
-              <th>
-                <center>Lihat</td>
-              <th>
-                <center>Cetak
-              </th>
+              <th rowspan="3"><center>No</th>
+              <th colspan="4" rowspan="2"><center>Status Pre Order</th>
+              <th colspan="4"><center>Status Transaksi</th>
             </tr>
-          </thead>
+            <tr>
+              <th colspan="2"><center>Di Kirim</th>
+              <th colspan="2"><center>Di Terima</th>
+            </tr>
+            <tr>
+              <th><center>Id Order</th>
+              <th><center>Nama Material</th>
+              <th><center>Kondisi</th>
+              <th><center>Keterangan</th>
+              <th><center>Waktu</th>
+              <th><center>Nama Ekspedisi</th>
+              <th><center>Waktu</th>
+              <th><center>Nama Penerima</th>
+            </tr>
+            </thead>
             <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, " SELECT DISTINCT kode_order, tanggal_order, kondisi, status FROM t_order ORDER BY kode_order DESC;");
+          $data = mysqli_query($koneksi, "SELECT * from t_order ");
           $no =1;
           while ($d = mysqli_fetch_array($data)) {
               ?>
-            <tr>
-              <td align="center"><?php echo $no++; ?></td>
-              <td align="center"><?php echo $d['kode_order']; ?></td>
-              <td align="center"><?php echo $d['tanggal_order']; ?></td>
-              <td align="center">
-                <?php echo $d['status'] ?>
-              </td>
-              <td>
-                <center><a type="bottom" class="btn btn-info btn-sm" href="order-tampil.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat Order</a>
-              </td>
-              <td>
-                <center><a type="bottom" class="btn btn-danger btn-sm" href="cetak.php?kode_order=<?php echo $d['kode_order']; ?>"> Cetak</a>
-              </td>
-
-            </tr>
+              <tr>
+                <td><center><?php echo $no++ ?></td>
+                <td><center><?php echo $d['kode_order']; ?></td>
+                <td><center><?php echo $d['nama_material']; ?></td>
+                <td><center><?php echo $d['status']; ?></td>
+                <td><center><?php echo $d['kondisi']; ?></td>
+                <td><center><?php echo $d['tgl_kirim']; ?></td>
+                <td><center><?php echo $d['ekspedisi']; ?></td>
+                <td><center><?php echo $d['tgl_terima']; ?></td>
+                <td><center><?php echo $d['nama_penerima']; ?></td>
+              </tr>
             <?php
           } ?>
           </table>
       </div>
     </div>
+    </form>
+
+    <!-- /#page-content-wrapper -->
+
   </div>
-
-  </form>
-
-  <!-- /#page-content-wrapper -->
-
-
-
-
   <!-- /#wrapper -->
 
   <!-- Bootstrap core JavaScript -->
@@ -121,6 +114,5 @@
   </script>
 
 </body>
-
 
 </html>

@@ -7,21 +7,12 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link" href="../material/index.php">Menu Material </a>
       </li>
-      <li class="nav-item " >
-        <a class="nav-link" href="index.php">Pre-Order</a>
+      <li class="nav-item active" >
+        <a class="nav-link" href="../order/index.php">PreOrder</a>
       </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="../lap/index.php">Lap. Material</a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="../lap/pre-order.php">Lap. Pre-Order</a>
-      </li>
-      <!-- <li class="nav-item ">
-        <a class="nav-link" href="order/index.php">Pre-Order</a>
-      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="../../logout.php">Logout</a>
       </li>

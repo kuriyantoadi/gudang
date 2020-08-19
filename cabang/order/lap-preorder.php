@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if ($_SESSION['status']!="pusat") {
+  if ($_SESSION['status']!="cabang") {
       header("location:../login.php?pesan=belum_login");
   }
   ?>
@@ -15,10 +15,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang Pusat</title>
+  <title>Gudang cabang</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../plugins/datatables/css/jquery.dataTables.min.css">
 
   <!-- Custom styles for this template -->
   <link href="../../css/simple-sidebar.css" rel="stylesheet">
@@ -40,10 +41,11 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Data Laporan Pre-Order</center>
+          <center>Data Laporan Material</center>
         </h3>
         <form action="update_masuk.php" method="post">
-          <table class="table table-bordered">
+          <table id="example" class="table table-bordered">
+            <thead>
             <tr>
               <th rowspan="3"><center>No</th>
               <th colspan="4" rowspan="2"><center>Status Pre Order</th>
@@ -63,6 +65,8 @@
               <th><center>Waktu</th>
               <th><center>Nama Penerima</th>
             </tr>
+          </thead>
+
             <?php
           include('../../koneksi.php');
           $data = mysqli_query($koneksi, "SELECT * from t_order ");
@@ -95,12 +99,17 @@
   <!-- Bootstrap core JavaScript -->
   <script src="../../vendor/jquery/jquery.min.js"></script>
   <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../plugins/datatables/js/jquery.dataTables.min.js"></script>
 
   <!-- Menu Toggle Script -->
   <script>
     $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
+    });
+
+    $(document).ready(function() {
+          $('#example').DataTable();
     });
   </script>
 
