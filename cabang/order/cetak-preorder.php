@@ -1,7 +1,7 @@
 <?php
   session_start();
   if ($_SESSION['status']!="cabang") {
-      header("location:../login.php?pesan=belum_login");
+      header("location:../../index.php?pesan=belum_login");
   }
   $kode_order = $_GET['kode_order'];
 
