@@ -41,7 +41,7 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Data Laporan Material</center>
+          <center>Data Laporan PreOrder</center>
         </h3>
           <button class="btn btn-danger btn-sm" style="margin-bottom: 20px" onclick="cetak()">Cetak Laporan</button>
           <table id="example" class="table table-bordered">

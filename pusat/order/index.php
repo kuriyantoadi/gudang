@@ -62,7 +62,7 @@
               <th>
                 <center>Lihat</td>
               <th>
-                <center>Cetak
+                <center>Delivery Note
               </th>
             </tr>
           </thead>
