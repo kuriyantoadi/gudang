@@ -45,7 +45,7 @@
         </h3>
         <form action="update_masuk.php" method="post">
           <a type="bottom" style="margin-right: 5px" class="btn btn-primary btn-sm" href="kode-order.php">Tambah Order</a>
-          <a type="bottom" class="btn btn-warning btn-sm" href="lap-preordr.php">Laporan Order</a>
+          <a type="bottom" class="btn btn-warning btn-sm" href="lap-preorder.php">Laporan Order</a>
           <br><br>
           <table id="example" class="table table-bordered table-hover">
             <thead>
