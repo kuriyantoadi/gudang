@@ -43,7 +43,7 @@
         <h2 class="mt-4" style="margin-bottom: 30px">
           <center>Tambah Material Baru</center>
         </h2>
-        <form action="up_baru.php" method="post">
+        <form action="" method="post">
 
           <table class="table table-bordered table-hover">
             <tr>
@@ -76,7 +76,7 @@
             </tr>
 
           </table><center>
-            <button type="submit" name="upload" value="upload" class="btn btn-success" >Submit</button>
+            <button type="submit" name="simpan" value="upload" class="btn btn-success" >Submit</button>
           </center>
       </div>
     </div>
@@ -103,3 +103,34 @@
 </body>
 
 </html>
+
+<?php
+
+//proses
+    if (isset($_POST['simpan'])) {
+        $id_material = $_POST['id_material'];
+        $nama_material = $_POST['nama_material'];
+        $jumlah_material = $_POST['jumlah_material'];
+        $jenis_satuan_material = $_POST['jenis_satuan_material'];
+
+        //script validasi data
+        include '../../koneksi.php';
+        $cek = mysqli_num_rows(mysqli_query($koneksi, "SELECT * FROM gudang_cabang WHERE id_material='$id_material' or nama_material='$nama_material'"));
+        if ($cek > 0) {
+            echo "<script>window.alert('ID Material atau Nama Material yang anda masukan sudah ada')
+    window.location='material-baru.php'</script>";
+        } else {
+            mysqli_query($koneksi, "INSERT INTO gudang_cabang values(
+          '',
+          '$id_material',
+          '$nama_material',
+          '$jumlah_material',
+          '$jenis_satuan_material'
+
+          )");
+
+            echo "<script>window.alert('DATA SUDAH DISIMPAN')
+    window.location='index.php'</script>";
+        }
+    }
+ ?>

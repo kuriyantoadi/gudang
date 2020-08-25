@@ -127,6 +127,12 @@
       </td>
     </tr>
     <tr>
+      <td>Kondisi Material</td>
+      <td>
+        <input type="text" class="form-control" name="kondisi" value="" required>
+      </td>
+    </tr>
+    <tr>
       <td>Ekpedisi</td>
       <td>
         <input type="text" class="form-control" name="ekspedisi" value="" required>

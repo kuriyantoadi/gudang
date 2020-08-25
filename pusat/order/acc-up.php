@@ -16,7 +16,6 @@ $kondisi =  $_POST['kondisi'];
 $ekspedisi = $_POST['ekspedisi'];
 $status = $_POST['status'];
 $tgl_kirim = date('d-m-Y');
-$nama_penerima = $_POST['nama_penerima'];
 $warehouse = $_POST['warehouse'];
 $devision = $_POST['devision'];
 $origin_place = $_POST['origin_place'];
@@ -48,7 +47,6 @@ mysqli_query($koneksi, "UPDATE t_order SET
                 status='$status',
                 ekspedisi='$ekspedisi',
                 tgl_kirim='$tgl_kirim',
-                nama_penerima='$nama_penerima',
                 warehouse='$warehouse',
                 devision='$devision',
                 origin_place='$origin_place',
