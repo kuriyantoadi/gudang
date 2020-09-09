@@ -15,7 +15,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Gudang cabang</title>
+  <title>Gudang Pusat</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,7 +37,7 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <h5>Halaman Gudang cabang</h5>
+        <h5>Halaman Gudang Pusat</h5>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -79,11 +79,11 @@
            foreach ($_POST['id_barang'] as $key=>$val) {
                $no=1;
                $id_barang = (int) $_POST['id_barang'][$key];
-               $sql =  'SELECT * FROM barang_cabang';
+               $sql =  'SELECT * FROM barang_Pusat';
                $sql .= ' WHERE id_barang='.$id_barang;
 
                // execute query
-               // $data = mysqli_query($koneksi, "SELECT * from barang_cabang");
+               // $data = mysqli_query($koneksi, "SELECT * from barang_Pusat");
                $data = mysqli_query($koneksi, $sql);
                $d = mysqli_fetch_array($data);
 

@@ -119,7 +119,7 @@
           <tr>
             <th width="400px"><center>Pj. Warehouse Jakarta</td>
             <th width="400px"><center>Pj. Ekspedisi</td>
-            <th width="400px"><center>Pj. Warehouse Cabang</td>
+            <th width="400px"><center>Pj. Warehouse Pusat</td>
             <th width="400px"><center>Driver</td>
           </tr>
           <tr>

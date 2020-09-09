@@ -175,7 +175,7 @@
       </td>
     </tr>
     <tr>
-      <td>PJ. Warehouse Cabang</td>
+      <td>PJ. Warehouse Pusat</td>
       <td>
         <input type="text" class="form-control" name="pj_warehouse_cbg" value="" required>
       </td>
