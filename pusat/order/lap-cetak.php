@@ -1,7 +1,7 @@
 <?php
   session_start();
   if ($_SESSION['status']!="pusat") {
-      header("location:../index.php?pesan=belum_login");
+      header("location:index.php?pesan=belum_login");
   }
   ?>
 
@@ -40,12 +40,10 @@
 
       <?php include('menu.php'); ?>
 
-      <div class="container">
+      <div class="container-fluid">
         <h3 class="mt-4" style="margin-bottom: 30px">
           <center>Data Laporan Pre-Order</center>
         </h3>
-        <!-- <button class="btn btn-danger btn-sm" style="margin-bottom: 20px" onclick="cetak()">Cetak Laporan</button> -->
-        <a href="lap-cetak.php" class="btn btn-danger btn-sm" style="margin-bottom: 20px">Cetak Laporan</a>
         <table id="example" class="table table-bordered">
           <thead>
             <tr>
@@ -156,9 +154,7 @@
       $('#example').DataTable();
     });
 
-    function cetak() {
-      window.print();
-    }
+    window.print();
   </script>
 
 </body>

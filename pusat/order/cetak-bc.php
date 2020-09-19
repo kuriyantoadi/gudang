@@ -112,16 +112,9 @@
               <td><center><?php echo $d['kondisi']; ?></td>
 
             </tr>
-            <?php } ?>
-        </table>
-        
 
-    <?php
-        include('../../koneksi.php');
-        $data = mysqli_query($koneksi, "SELECT * from t_order where kode_order='$kode_order'");
-        $no =1;
-        while ($d = mysqli_fetch_array($data)) {
-            ?>
+        </table>
+
         <table style="margin-top: 50px">
           <tr>
             <th width="400px"><center>Pj. Warehouse Jakarta</td>
