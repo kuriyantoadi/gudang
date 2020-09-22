@@ -57,9 +57,6 @@
               <th>
                 <center>Tanggal Order</td>
               <th>
-                <center>Status Order
-              </th>
-              <th>
                 <center>Lihat</td>
               <th>
                 <center>Delivery Note
@@ -76,9 +73,7 @@
               <td align="center"><?php echo $no++; ?></td>
               <td align="center"><?php echo $d['kode_order']; ?></td>
               <td align="center"><?php echo $d['tanggal_order']; ?></td>
-              <td align="center">
-                <?php echo $d['status'] ?>
-              </td>
+              
               <td>
                 <center><a type="bottom" class="btn btn-info btn-sm" href="order-tampil.php?kode_order=<?php echo $d['kode_order']; ?>">Lihat Order</a>
               </td>
