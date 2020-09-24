@@ -45,7 +45,7 @@
       <p class="lead"><center>Sekarang anda Panel Gudang</p>
   </p>
 </div>
-        
+
       </div>
     <!-- /#page-content-wrapper -->
 
