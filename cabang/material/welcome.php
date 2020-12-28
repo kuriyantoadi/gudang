@@ -42,7 +42,7 @@
       <div class="container">
       <div style="margin-top: 20px;" class="jumbotron">
       <h1 class="display-6"><center>Halaman Cabang</h1>
-      <p class="lead"><center>Sekarang anda Panel Gudang</p>
+      <p class="lead"><center>Sekarang anda Panel Cabang</p>
   </p>
 </div>
         

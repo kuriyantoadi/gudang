@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['status'] != "pusat") {
+if ($_SESSION['status'] != "cabang") {
   header("location:../../index.php?pesan=belum_login");
 }
 ?>
@@ -47,7 +47,7 @@ if ($_SESSION['status'] != "pusat") {
         <form action="update_masuk.php" method="post">
           <a href="material-baru.php" style="margin-bottom: 30px; margin-right: 10px" type="button" class="btn btn-sm btn-primary" name="button">Input Material Baru</a>
           <a href="material-lap.php" style="margin-bottom: 30px; margin-right: 10px" type="button" class="btn btn-sm btn-warning" name="button">Laporan Material</a>
-          <a href="material-cabang.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-danger" name="button">Material Cabang</a>
+          <a href="index.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-danger" name="button">Material Cabang</a>
           <table id="example" class="table table-bordered table-hover">
             <thead>
               <tr>
@@ -62,14 +62,7 @@ if ($_SESSION['status'] != "pusat") {
                   <center>Jumlah Material</td>
                 <th>
                   <center>Jenis Satuan Material</td>
-                <th>
-                  <center>Material Masuk</td>
-                <th>
-                  <center>Material Keluar</td>
-                    <!-- <th>
-                <center>Edit</td>
-              <th>
-                <center>Hapus</td> -->
+                
               </tr>
             </thead>
             <tbody>
@@ -89,20 +82,8 @@ if ($_SESSION['status'] != "pusat") {
                   <td>
                     <center><?php echo $d['jenis_satuan_material']; ?>
                   </td>
-                  <td>
-                    <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Material Masuk</a>
-                  </td>
-                  <td>
-                    <center><a type="bottom" class="btn btn-primary btn-sm" href="material-keluar.php?id_material=<?php echo $d['id_material']; ?>">Material Keluar</a>
-                  </td>
-                  <!-- <td>
-                <center><a type="bottom" class="btn btn-warning btn-sm" href="material-edit.php?id_material=<?php echo $d['id_material']; ?>">Edit</a>
-              </td>
-              <td>
-                <center>
-                  <a type="button" class="btn btn-danger btn-sm" href="up_hapus.php?id=<?php echo $d['id']; ?>" onclick="return confirm('Anda yakin Hapus data material <?php echo $d['nama_material']; ?> ?')">Hapus</a>
-                </center>
-              </td> -->
+                  
+                  
                 </tr>
               <?php
               } ?>

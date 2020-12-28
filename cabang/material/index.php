@@ -1,9 +1,9 @@
 <?php
-  session_start();
-  if ($_SESSION['status']!="cabang") {
-      header("location:../../index.php?pesan=belum_login");
-  }
-  ?>
+session_start();
+if ($_SESSION['status'] != "cabang") {
+  header("location:../../index.php?pesan=belum_login");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,11 +41,11 @@
 
       <div class="container">
         <h3 class="mt-4" style="margin-bottom: 30px">
-          <center>Data Material</center>
+          <center>Data Material Cabang</center>
         </h3>
         <a href="material-baru.php" style="margin-bottom: 30px; margin-right: 10px" type="button" class="btn btn-sm btn-primary" name="button">Input Material Baru</a>
         <a href="material-lap.php" style="margin-bottom: 30px; margin-right: 10px" type="button" class="btn btn-sm btn-warning" name="button">Laporan Material</a>
-        <!-- <button class="btn btn-danger btn-sm" style="margin-bottom: 30px" onclick="cetak()">Cetak Laporan</button> -->
+        <a href="material-pusat.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-danger" name="button">Material Pusat</a>
         <table id="example" class="table table-bordered table-hover">
           <thead>
             <tr>
@@ -73,26 +73,26 @@
           <?php
           include('../../koneksi.php');
           $data = mysqli_query($koneksi, "SELECT * from gudang_cabang");
-          $no =1;
+          $no = 1;
           while ($d = mysqli_fetch_array($data)) {
-              ?>
-          <tr>
-            <td><?php echo $no++; ?></td>
-            <td><?php echo $d['id_material']; ?></td>
-            <td><?php echo $d['nama_material']; ?></td>
-            <td>
-              <center><?php echo $d['jumlah_material']; ?>
-            </td>
-            <td>
-              <center><?php echo $d['jenis_satuan_material']; ?>
-            </td>
-            <td>
-              <center><a type="bottom" class="btn btn-info btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Material Masuk</a>
-            </td>
-            <td>
-              <center><a type="bottom" class="btn btn-danger btn-sm" href="material-keluar.php?id_material=<?php echo $d['id_material']; ?>">Material Keluar</a>
-            </td>
-          </tr>
+          ?>
+            <tr>
+              <td><?php echo $no++; ?></td>
+              <td><?php echo $d['id_material']; ?></td>
+              <td><?php echo $d['nama_material']; ?></td>
+              <td>
+                <center><?php echo $d['jumlah_material']; ?>
+              </td>
+              <td>
+                <center><?php echo $d['jenis_satuan_material']; ?>
+              </td>
+              <td>
+                <center><a type="bottom" class="btn btn-info btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Material Masuk</a>
+              </td>
+              <td>
+                <center><a type="bottom" class="btn btn-danger btn-sm" href="material-keluar.php?id_material=<?php echo $d['id_material']; ?>">Material Keluar</a>
+              </td>
+            </tr>
           <?php
           } ?>
         </table>
