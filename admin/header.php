@@ -6,7 +6,7 @@ if ($_SESSION['status'] != "admin") {
 }
 ?>
 
-<!-- <!DOCTYPE html> -->
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
