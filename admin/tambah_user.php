@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 if ($_SESSION['status']!="admin") {
@@ -9,16 +8,31 @@ if ($_SESSION['status']!="admin") {
 include '../koneksi.php';
 
 $username = $_POST['username'];
-$password = md5($_POST['password']);
+$password = ($_POST['password']);
 $level = $_POST['level'];
 
-mysqli_query($koneksi, "insert into user values(
+$exec = mysqli_query($koneksi, "insert into user values(
 '',
-'$username',
-'$password',
-'$level'
+'".$username."',
+MD5('".$password."'),
+'".$level."'
 
 )");
+ 
 
+ 	if( $exec ){
+ 		echo "
+ 		<script>
+ 		alert('data admin berhasil ditambahkan');
+ 		document.location.href = 'datauser.php';
+ 		</script>
+ 		";
+ 	}else {
+ 		echo "
+ 		<script>
+ 		alert('data admin gagal ditambahkan');
+ 		document.location.href = 'datauser.php';
+ 		</script>
+ 		";
+ 	}
  header("location:datauser.php");
- ?>
