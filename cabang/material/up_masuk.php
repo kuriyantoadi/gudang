@@ -36,7 +36,7 @@ mysqli_query($koneksi, "insert into lap_cabang values(
 )");
 
 
-$data = mysqli_query($koneksi, "SELECT * from gudang_cabang where id=$id");
+$data = mysqli_query($koneksi, "SELECT * from gudang_cabang where id_material=$id_material");
 $no =1;
 while ($d = mysqli_fetch_array($data)) {
     $jumlah_material = $d['jumlah_material'];
@@ -47,9 +47,15 @@ $total_akhir = $jumlah_material+$material_masuk;
 // echo $total_akhir;
 
 mysqli_query($koneksi, "UPDATE gudang_cabang SET
-             id='$id',
+             id_material='$id_material',
              jumlah_material='$total_akhir'
-             where id='$id'
+             where id_material='$id_material'
              ");
+
+ mysqli_query($koneksi, "UPDATE lap_cabang SET
+              id_material='$id_material',
+              jumlah_material='$total_akhir'
+              where id_material='$id_material'
+              ");
 
  header("location:index.php");

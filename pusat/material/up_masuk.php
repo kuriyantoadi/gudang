@@ -20,7 +20,6 @@ $status_barang = $_POST['status_barang'];
 $tanggal = $_POST['tanggal'];
 $pj_petugas = $_POST['pj_petugas'];
 
-// echo $status_barang;
 
 mysqli_query($koneksi, "insert into lap_pusat values(
 '',
@@ -36,7 +35,7 @@ mysqli_query($koneksi, "insert into lap_pusat values(
 )");
 
 
-$data = mysqli_query($koneksi, "SELECT * from gudang_pusat where id=$id");
+$data = mysqli_query($koneksi, "SELECT * from gudang_pusat where id_material=$id_material");
 $no =1;
 while ($d = mysqli_fetch_array($data)) {
     $jumlah_material = $d['jumlah_material'];
@@ -47,9 +46,15 @@ $total_akhir = $jumlah_material+$material_masuk;
 // echo $total_akhir;
 
 mysqli_query($koneksi, "UPDATE gudang_pusat SET
-             id='$id',
+             id_material='$id_material',
              jumlah_material='$total_akhir'
-             where id='$id'
+             where id_material='$id_material'
              ");
 
+
+mysqli_query($koneksi, "UPDATE lap_pusat SET
+             id_material='$id_material',
+             jumlah_material='$total_akhir'
+             where id_material='$id_material'
+             ");
  header("location:index.php");
