@@ -1,21 +1,21 @@
 <?php
 session_start();
 if ($_SESSION['status']!="admin") {
-    header("location:../../index.php?pesan=belum_login");
+    header("location:../index.php?pesan=belum_login");
 }
 
 
 include '../koneksi.php';
 
 $username = $_POST['username'];
-$password = ($_POST['password']);
+$password = md5($_POST['password']);
 $level = $_POST['level'];
 
 $exec = mysqli_query($koneksi, "insert into user values(
 '',
-'".$username."',
-MD5('".$password."'),
-'".$level."'
+'$username',
+'$password',
+'$level'
 
 )");
  
