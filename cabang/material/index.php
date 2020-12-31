@@ -126,7 +126,7 @@ if ($_SESSION['status'] != "cabang") {
           </thead>
           <?php
           include('../../koneksi.php');
-          $data = mysqli_query($koneksi, "SELECT * from gudang_cabang");
+          $data = mysqli_query($koneksi, "SELECT * from gudang_pusat");
           $no = 1;
           while ($d = mysqli_fetch_array($data)) {
           ?>
