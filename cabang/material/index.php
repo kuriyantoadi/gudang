@@ -45,7 +45,6 @@ if ($_SESSION['status'] != "cabang") {
         </h3>
         <a href="material-baru.php" style="margin-bottom: 30px; margin-right: 10px" type="button" class="btn btn-sm btn-primary" name="button">Input Material Baru</a>
         <a href="material-lap.php" style="margin-bottom: 30px; margin-right: 10px" type="button" class="btn btn-sm btn-warning" name="button">Laporan Material</a>
-        <a href="material-pusat.php" style="margin-bottom: 30px" type="button" class="btn btn-sm btn-danger" name="button">Material Pusat</a>
         <table id="example" class="table table-bordered table-hover">
           <thead>
             <tr>
@@ -87,11 +86,66 @@ if ($_SESSION['status'] != "cabang") {
                 <center><?php echo $d['jenis_satuan_material']; ?>
               </td>
               <td>
-                <center><a type="bottom" class="btn btn-info btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Material Masuk</a>
+                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Material Masuk</a>
               </td>
               <td>
-                <center><a type="bottom" class="btn btn-danger btn-sm" href="material-keluar.php?id_material=<?php echo $d['id_material']; ?>">Material Keluar</a>
+                <center><a type="bottom" class="btn btn-primary btn-sm" href="material-keluar.php?id_material=<?php echo $d['id_material']; ?>">Material Keluar</a>
               </td>
+            </tr>
+          <?php
+          } ?>
+        </table>
+
+
+        <h3 class="mt-4" style="margin-bottom: 30px; margin-top: 40px;">
+          <center>Data Material Pusat</center>
+        </h3>
+        <table id="example1" class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>
+                <center>No
+              </th>
+              <th>
+                <center>ID Material</td>
+              <th>
+                <center>Nama Material</td>
+              <th>
+                <center>Jumlah Material</td>
+              <th>
+                <center>Jenis Satuan Material</td>
+              <!-- <th>
+                <center>Material Masuk</td>
+              <th>
+                <center>Material Keluar</td> -->
+                  <!-- <th>
+                <center>Edit</td>
+              <th>
+                <center>Hapus</td> -->
+            </tr>
+          </thead>
+          <?php
+          include('../../koneksi.php');
+          $data = mysqli_query($koneksi, "SELECT * from gudang_cabang");
+          $no = 1;
+          while ($d = mysqli_fetch_array($data)) {
+          ?>
+            <tr>
+              <td><?php echo $no++; ?></td>
+              <td><?php echo $d['id_material']; ?></td>
+              <td><?php echo $d['nama_material']; ?></td>
+              <td>
+                <center><?php echo $d['jumlah_material']; ?>
+              </td>
+              <td>
+                <center><?php echo $d['jenis_satuan_material']; ?>
+              </td>
+              <!-- <td>
+                <center><a type="bottom" class="btn btn-success btn-sm" href="material-masuk.php?id_material=<?php echo $d['id_material']; ?>">Material Masuk</a>
+              </td>
+              <td>
+                <center><a type="bottom" class="btn btn-primary btn-sm" href="material-keluar.php?id_material=<?php echo $d['id_material']; ?>">Material Keluar</a>
+              </td> -->
             </tr>
           <?php
           } ?>
@@ -118,6 +172,11 @@ if ($_SESSION['status'] != "cabang") {
 
     $(document).ready(function() {
       $('#example').DataTable();
+    });
+
+
+    $(document).ready(function() {
+      $('#example1').DataTable();
     });
 
     function cetak() {
